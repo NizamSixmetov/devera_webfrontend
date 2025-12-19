@@ -12,9 +12,9 @@ const navItems = [
 ];
 
 const languages = [
+  { code: "az", label: "Azərbaycan" },
   { code: "en", label: "English" },
   { code: "ru", label: "Русский" },
-  { code: "az", label: "Azərbaycan" },
 ];
 
 export default function Header() {
@@ -128,7 +128,7 @@ export default function Header() {
           <div ref={langRef} className="relative">
             <button
               onClick={() => setIsLangOpen((v) => !v)}
-              className="flex items-center gap-2 px-4 py-2 rounded-full border border-gray-200 text-sm font-medium text-[#6B7280] hover:text-[#0A66C2] transition"
+              className="flex items-center gap-2 px-4 py-2 rounded-full border border-gray-200 text-sm font-medium text-[#0A66C2] hover:text-[#0A66C2] transition"
             >
               {currentLang.label}
               <ChevronDown
@@ -148,7 +148,7 @@ export default function Header() {
                     className={`w-full text-left px-4 py-2 text-sm transition ${
                       i18n.language === lng.code
                         ? "bg-[#0A66C2] text-white"
-                        : "text-gray-600 hover:bg-gray-50"
+                        : "text-gray-600 hover:text-[#0A66C2] cursor-pointer"
                     }`}
                   >
                     {lng.label}
