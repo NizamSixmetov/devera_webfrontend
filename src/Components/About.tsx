@@ -1,22 +1,25 @@
 import { motion } from "motion/react";
 import { Shield, Zap, Target } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 export default function About() {
+  const { t } = useTranslation();
+
   const values = [
     {
       icon: <Shield className="text-[#0A66C2]" size={24} />,
-      title: "Reliability",
-      desc: "We build robust systems that stand the test of time and scale with your growth.",
+      title: t("about.values.reliability.title"),
+      desc: t("about.values.reliability.desc"),
     },
     {
       icon: <Zap className="text-[#7C3AED]" size={24} />,
-      title: "Innovation",
-      desc: "Staying ahead of the curve with the latest technologies and engineering practices.",
+      title: t("about.values.innovation.title"),
+      desc: t("about.values.innovation.desc"),
     },
     {
       icon: <Target className="text-[#0A66C2]" size={24} />,
-      title: "Expertise",
-      desc: "A team of senior engineers dedicated to solving complex business challenges.",
+      title: t("about.values.expertise.title"),
+      desc: t("about.values.expertise.desc"),
     },
   ];
 
@@ -31,21 +34,16 @@ export default function About() {
             transition={{ duration: 0.6 }}
           >
             <h2 className="text-sm font-bold text-[#0A66C2] uppercase tracking-[0.2em] mb-4">
-              About DEVERA
+              {t("about.sectionTitle")}
             </h2>
             <h3 className="text-4xl md:text-5xl font-bold text-black mb-8 leading-tight">
-              Engineering Excellence for the Digital Era
+              {t("about.mainTitle")}
             </h3>
             <p className="text-lg text-[#6B7280] mb-8 leading-relaxed">
-              DEVERA is a technology-first IT company specializing in
-              high-performance software development. We don't just write code;
-              we build digital foundations for the world's most ambitious
-              companies.
+              {t("about.description1")}
             </p>
             <p className="text-lg text-[#6B7280] mb-12 leading-relaxed">
-              Our mission is to bridge the gap between complex business needs
-              and elegant technical solutions, ensuring our clients stay
-              competitive in an ever-evolving landscape.
+              {t("about.description2")}
             </p>
 
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
@@ -81,13 +79,13 @@ export default function About() {
                 <div>
                   <p className="text-4xl font-bold mb-1">150+</p>
                   <p className="text-xs uppercase tracking-widest opacity-80">
-                    Projects
+                    {t("about.stats.projects")}
                   </p>
                 </div>
                 <div>
                   <p className="text-4xl font-bold mb-1">10+</p>
                   <p className="text-xs uppercase tracking-widest opacity-80">
-                    Years
+                    {t("about.stats.years")}
                   </p>
                 </div>
               </div>
@@ -98,6 +96,3 @@ export default function About() {
     </section>
   );
 }
-
-
-
