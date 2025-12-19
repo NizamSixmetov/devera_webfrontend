@@ -1,7 +1,10 @@
 import { motion } from "motion/react";
 import { ArrowRight, ChevronRight } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 export default function Hero() {
+  const { t } = useTranslation();
+
   return (
     <section
       id="hero"
@@ -22,18 +25,16 @@ export default function Hero() {
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
               <span className="relative inline-flex rounded-full h-2 w-2 bg-[#0A66C2]"></span>
             </span>
-            Next-Gen IT Solutions
+            {t("hero.badge")}
           </div>
 
           <h1 className="text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight text-black leading-[0.95] mb-8">
-            DEVERA
-            <span className="block text-[#0A66C2]">Digital Future.</span>
+            {t("hero.title1")}
+            <span className="block text-[#0A66C2]">{t("hero.title2")}</span>
           </h1>
 
           <p className="text-xl text-[#6B7280] max-w-lg mb-10 leading-relaxed">
-            Building scalable digital solutions that empower businesses to
-            thrive in the modern era. We specialize in high-end engineering and
-            premium design.
+            {t("hero.description")}
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4">
@@ -43,9 +44,9 @@ export default function Hero() {
                   .getElementById("contact")
                   ?.scrollIntoView({ behavior: "smooth" })
               }
-              className="bg-[#7C3AED] hover:bg-[#6D28D9] text-white px-8 py-4 rounded-full font-bold flex items-center justify-center gap-2 transition-all shadow-xl shadow-purple-200 active:scale-95"
+              className="bg-[#7C3AED] hover:bg-[#6D28D9] text-white px-8 py-4 rounded-full font-bold flex items-center justify-center gap-2 transition-all shadow-xl shadow-purple-200 active:scale-95 cursor-pointer"
             >
-              Get in Touch
+              {t("hero.ctaPrimary")}
               <ArrowRight size={20} />
             </button>
             <button
@@ -54,9 +55,9 @@ export default function Hero() {
                   .getElementById("projects")
                   ?.scrollIntoView({ behavior: "smooth" })
               }
-              className="bg-white border border-gray-200 hover:border-[#0A66C2] text-black px-8 py-4 rounded-full font-bold flex items-center justify-center gap-2 transition-all active:scale-95"
+              className="bg-white border border-gray-200 hover:border-[#0A66C2] text-black px-8 py-4 rounded-full font-bold flex items-center justify-center gap-2 transition-all active:scale-95 cursor-pointer"
             >
-              View Projects
+              {t("hero.ctaSecondary")}
               <ChevronRight size={20} className="text-[#0A66C2]" />
             </button>
           </div>
@@ -93,42 +94,42 @@ export default function Hero() {
               className="rounded-4xl w-full h-auto object-cover"
             />
             {/* Floating elements */}
-            <div className="absolute top-10 right-10 bg-white p-4 rounded-2xl shadow-xl border border-gray-50 animate-bounce-slow">
+            <div className="absolute top-10 right-10 bg-white p-4 rounded-2xl shadow-xl border border-gray-50 animate-bounce-slow w-42">
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center text-green-600">
                   <ArrowRight size={20} className="-rotate-45" />
                 </div>
                 <div>
                   <p className="text-[10px] text-gray-400 uppercase font-bold">
-                    Growth
+                    {t("hero.stats.growth")}
                   </p>
                   <p className="text-lg font-bold text-black">+124%</p>
                 </div>
               </div>
             </div>
             {/* Floating elements */}
-            <div className="absolute top-31 right-10 bg-white p-4 rounded-2xl shadow-xl border border-gray-50 animate-bounce-slow">
+            <div className="absolute top-31 right-10 bg-white p-4 rounded-2xl shadow-xl border border-gray-50 animate-bounce-slow  w-42">
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center text-green-600">
                   <ArrowRight size={20} className="-rotate-45" />
                 </div>
                 <div>
                   <p className="text-[10px] text-gray-400 uppercase font-bold">
-                    Safety
+                    {t("hero.stats.safety")}
                   </p>
                   <p className="text-lg font-bold text-black">+100%</p>
                 </div>
               </div>
             </div>
             {/* Floating elements */}
-            <div className="absolute top-52 right-10 bg-white p-4 rounded-2xl shadow-xl border border-gray-50 animate-bounce-slow">
+            <div className="absolute top-52 right-10 bg-white p-4 rounded-2xl shadow-xl border border-gray-50 animate-bounce-slow  w-42">
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center text-green-600">
                   <ArrowRight size={20} className="-rotate-45" />
                 </div>
                 <div>
                   <p className="text-[10px] text-gray-400 uppercase font-bold">
-                    Scale
+                    {t("hero.stats.scale")}
                   </p>
                   <p className="text-lg font-bold text-black">+137%</p>
                 </div>
