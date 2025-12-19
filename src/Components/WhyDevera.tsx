@@ -1,27 +1,30 @@
 import { motion } from "motion/react";
 import { CheckCircle2, Users, Globe, Award } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 export default function WhyDevera() {
+  const { t } = useTranslation();
+
   const benefits = [
     {
       icon: <Users className="text-[#0A66C2]" />,
-      title: "Senior-Only Team",
-      desc: "Your project is handled by experienced engineers, not juniors.",
+      title: t("whyDevera.benefits.seniorTeam.title"),
+      desc: t("whyDevera.benefits.seniorTeam.desc"),
     },
     {
       icon: <Globe className="text-[#7C3AED]" />,
-      title: "Global Standards",
-      desc: "We follow international best practices in security and performance.",
+      title: t("whyDevera.benefits.globalStandards.title"),
+      desc: t("whyDevera.benefits.globalStandards.desc"),
     },
     {
       icon: <Award className="text-[#0A66C2]" />,
-      title: "Quality First",
-      desc: "Rigorous testing and code reviews are part of our DNA.",
+      title: t("whyDevera.benefits.qualityFirst.title"),
+      desc: t("whyDevera.benefits.qualityFirst.desc"),
     },
     {
       icon: <CheckCircle2 className="text-[#7C3AED]" />,
-      title: "Transparent Process",
-      desc: "Real-time updates and clear communication at every stage.",
+      title: t("whyDevera.benefits.transparentProcess.title"),
+      desc: t("whyDevera.benefits.transparentProcess.desc"),
     },
   ];
 
@@ -36,15 +39,13 @@ export default function WhyDevera() {
           <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div>
               <h2 className="text-sm font-bold uppercase tracking-[0.2em] mb-6 opacity-80">
-                Why Choose Us
+                {t("whyDevera.sectionTitle")}
               </h2>
               <h3 className="text-4xl md:text-5xl font-bold mb-8 leading-tight">
-                The DEVERA Advantage: Where Quality Meets Innovation
+                {t("whyDevera.mainTitle")}
               </h3>
               <p className="text-xl opacity-80 mb-12 leading-relaxed">
-                We don't just build software; we build partnerships. Our
-                approach is rooted in deep technical expertise and a commitment
-                to your business success.
+                {t("whyDevera.description")}
               </p>
               <button
                 onClick={() =>
@@ -52,9 +53,9 @@ export default function WhyDevera() {
                     .getElementById("contact")
                     ?.scrollIntoView({ behavior: "smooth" })
                 }
-                className="bg-white text-[#0A66C2] px-8 py-4 rounded-full font-bold hover:bg-gray-100 transition-all active:scale-95"
+                className="bg-white text-[#0A66C2] px-8 py-4 rounded-full font-bold hover:bg-gray-100 transition-all active:scale-95 cursor-pointer"
               >
-                Learn More About Us
+                {t("whyDevera.cta")}
               </button>
             </div>
 
@@ -84,6 +85,3 @@ export default function WhyDevera() {
     </section>
   );
 }
-
-
-
