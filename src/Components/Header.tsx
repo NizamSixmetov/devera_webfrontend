@@ -27,14 +27,12 @@ export default function Header() {
 
   const langRef = useRef<HTMLDivElement>(null);
 
-  // Scroll effect
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 20);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Close language dropdown on outside click
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
       if (langRef.current && !langRef.current.contains(e.target as Node)) {
@@ -45,7 +43,6 @@ export default function Header() {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  // Active section observer
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -205,7 +202,10 @@ export default function Header() {
             {languages.map((lng) => (
               <button
                 key={lng.code}
-                onClick={() => { changeLanguage(lng.code); setIsMenuOpen(false); }}
+                onClick={() => {
+                  changeLanguage(lng.code);
+                  setIsMenuOpen(false);
+                }}
                 className={`w-full px-4 py-3 text-left text-sm cursor-pointer ${
                   i18n.language === lng.code
                     ? "bg-[#0A66C2] text-white"
