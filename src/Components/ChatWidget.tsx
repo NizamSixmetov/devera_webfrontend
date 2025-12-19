@@ -19,6 +19,7 @@ const ChatWidget = () => {
 
   const chatContainerRef = useRef<HTMLDivElement>(null);
   const messagesEndRef = useRef<HTMLDivElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
 
   const getInitialMessages = useCallback((): Message[] => {
     try {
@@ -65,6 +66,7 @@ const ChatWidget = () => {
     }
   }, [messages, isChatOpen]);
 
+  // Добавляем обработчик для закрытия по клику вне чата
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (
@@ -82,6 +84,20 @@ const ChatWidget = () => {
     };
   }, [isChatOpen]);
 
+  // Добавляем обработчик для закрытия по клавише Esc
+  useEffect(() => {
+    const handleEscKey = (event: KeyboardEvent) => {
+      if (event.key === "Escape" && isChatOpen) {
+        setIsChatOpen(false);
+      }
+    };
+
+    document.addEventListener("keydown", handleEscKey);
+    return () => {
+      document.removeEventListener("keydown", handleEscKey);
+    };
+  }, [isChatOpen]);
+
   useEffect(() => {
     const timer = setTimeout(() => {
       setHasAppeared(true);
@@ -89,6 +105,15 @@ const ChatWidget = () => {
 
     return () => clearTimeout(timer);
   }, []);
+
+  // Фокус на поле ввода при открытии чата
+  useEffect(() => {
+    if (isChatOpen && inputRef.current) {
+      setTimeout(() => {
+        inputRef.current?.focus();
+      }, 100);
+    }
+  }, [isChatOpen]);
 
   const sendMessage = () => {
     if (!message.trim()) return;
@@ -155,20 +180,25 @@ const ChatWidget = () => {
               onClick={() => setIsChatOpen(false)}
             />
 
+            {/* Chat Window - Separate positioning for mobile and desktop */}
             <motion.div
               initial={{ opacity: 0, scale: 0.9, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.9, y: 20 }}
               transition={{ duration: 0.3 }}
-              className="fixed md:relative flex flex-col bg-white rounded-2xl shadow-2xl border border-gray-200 
+              className="flex flex-col bg-white rounded-2xl shadow-2xl border border-gray-200 
                          w-[calc(100vw-2rem)] md:w-[380px] 
                          h-[85vh] md:h-[500px] 
-                         top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 
-                         md:top-auto md:left-auto md:right-0 md:bottom-0 md:transform-none 
-                         overflow-hidden z-50"
+                         overflow-hidden z-50
+                         fixed
+                         md:fixed md:bottom-32 md:right-6
+                         md:top-auto md:left-auto md:transform-none
+                         md:translate-x-0 md:translate-y-0"
               style={{
                 maxWidth: "calc(100vw - 2rem)",
                 maxHeight: "85vh",
+                bottom: "3%",
+                right: "2%",
               }}
             >
               {/* Chat Header */}
@@ -238,6 +268,7 @@ const ChatWidget = () => {
               <div className="border-t border-gray-200 p-4">
                 <div className="flex gap-2">
                   <input
+                    ref={inputRef}
                     type="text"
                     value={message}
                     onChange={(e) => setMessage(e.target.value)}
