@@ -1,11 +1,10 @@
 import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
 
-// Получаем сохраненный язык из localStorage или используем "az" по умолчанию
 const savedLanguage = localStorage.getItem("lang") || "az";
 
 i18n.use(initReactI18next).init({
-  lng: savedLanguage, // Используем сохраненный язык или "az"
+  lng: savedLanguage,
   fallbackLng: "az",
 
   interpolation: {
@@ -204,6 +203,25 @@ i18n.use(initReactI18next).init({
           terms: "Terms of Service",
           cookies: "Cookie Policy",
           copyright: "© {{year}} DEVERA IT Solutions. All rights reserved."
+        },
+        chat: {
+          title: "DEVERA Support",
+          subtitle: "Typically replies in 5 min",
+          botName: "DEVERA Bot",
+          user: "You",
+          placeholder: "Type your message here...",
+          availability: "Our team is available 24/7 for urgent inquiries",
+          initialMessages: [
+            "Hello! I'm Devera Support Bot. How can I help you today?",
+            "Welcome to DEVERA IT Solutions! We're here to assist you with any questions about our services, projects, or partnerships."
+          ],
+          responses: [
+            "Thank you for your message! Our team will get back to you shortly.",
+            "I understand. Let me connect you with a specialist who can help with that.",
+            "Great question! Our experts typically respond within 1-2 business hours.",
+            "For detailed project inquiries, I recommend filling out our contact form on the website.",
+            "I've noted your question. Would you like to schedule a consultation call?"
+          ]
         }
       },
     },
@@ -398,6 +416,25 @@ i18n.use(initReactI18next).init({
           terms: "Условия использования",
           cookies: "Политика использования файлов cookie",
           copyright: "© {{year}} DEVERA IT Solutions. Все права защищены."
+        },
+        chat: {
+          title: "Поддержка DEVERA",
+          subtitle: "Обычно отвечают в течение 5 минут",
+          botName: "Бот DEVERA",
+          user: "Вы",
+          placeholder: "Введите ваше сообщение...",
+          availability: "Наша команда доступна 24/7 для срочных запросов",
+          initialMessages: [
+            "Привет! Я бот поддержки Devera. Чем могу помочь вам сегодня?",
+            "Добро пожаловать в DEVERA IT Solutions! Мы здесь, чтобы помочь вам с любыми вопросами о наших услугах, проектах или сотрудничестве."
+          ],
+          responses: [
+            "Спасибо за ваше сообщение! Наша команда свяжется с вами в ближайшее время.",
+            "Понял вас. Позвольте мне связать вас со специалистом, который может помочь с этим.",
+            "Отличный вопрос! Наши эксперты обычно отвечают в течение 1-2 рабочих дней.",
+            "Для детальных запросов по проектам рекомендую заполнить нашу контактную форму на сайте.",
+            "Я отметил ваш вопрос. Хотите запланировать консультационный звонок?"
+          ]
         }
       },
     },
@@ -592,6 +629,25 @@ i18n.use(initReactI18next).init({
           terms: "Xidmət Şərtləri",
           cookies: "Cookie Siyasəti",
           copyright: "© {{year}} DEVERA IT Solutions. Bütün hüquqlar qorunur."
+        },
+        chat: {
+          title: "DEVERA Dəstək",
+          subtitle: "Adətən 5 dəqiqə ərzində cavab verir",
+          botName: "DEVERA Bot",
+          user: "Siz",
+          placeholder: "Mesajınızı buraya yazın...",
+          availability: "Komandamız təcili sorğular üçün 24/7 mövcuddur",
+          initialMessages: [
+            "Salam! Mən Devera Dəstək Botuyam. Bu gün sizə necə kömək edə bilərəm?",
+            "DEVERA IT Solutions-a xoş gəlmisiniz! Xidmətlərimiz, layihələrimiz və ya əməkdaşlıqlarımızla bağlı istənilən suallarınızda sizə kömək etmək üçün buradayıq."
+          ],
+          responses: [
+            "Mesajınız üçün təşəkkürlər! Komandamız sizinlə ən qısa zamanda əlaqə saxlayacaq.",
+            "Başa düşürəm. Sizi bu mövzuda kömək edə biləcək mütəxəssislə əlaqələndirim.",
+            "Əla sual! Mütəxəssislərimiz adətən 1-2 iş günü ərzində cavab verirlər.",
+            "Layihə ilə bağlı ətraflı sorğular üçün veb saytımızdakı əlaqə formasını doldurmağı məsləhət görürəm.",
+            "Sualınızı qeyd etdim. Konsultasiya zəngi planlaşdırmaq istərdinizmi?"
+          ]
         }
       },
     },
