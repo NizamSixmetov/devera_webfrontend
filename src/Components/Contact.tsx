@@ -30,7 +30,6 @@ export default function Contact() {
   } = useForm<ContactFormData>();
 
   const onSubmit: SubmitHandler<ContactFormData> = async (data) => {
-    // Simulate API call
     await new Promise((resolve) => setTimeout(resolve, 1500));
     console.log("Form Data:", data);
     toast.success(t("contact.form.successMessage"));
