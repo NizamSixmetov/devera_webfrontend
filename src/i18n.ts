@@ -1,8 +1,11 @@
 import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
 
+// Получаем сохраненный язык из localStorage или используем "az" по умолчанию
+const savedLanguage = localStorage.getItem("lang") || "az";
+
 i18n.use(initReactI18next).init({
-  lng: "az",
+  lng: savedLanguage, // Используем сохраненный язык или "az"
   fallbackLng: "az",
 
   interpolation: {
