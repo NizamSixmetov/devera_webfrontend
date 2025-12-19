@@ -16,14 +16,16 @@ const ChatWidget = () => {
   const [message, setMessage] = useState("");
   const [messages, setMessages] = useState<Message[]>([]);
   const [hasAppeared, setHasAppeared] = useState(false);
-  
+
   const chatContainerRef = useRef<HTMLDivElement>(null);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   const getInitialMessages = useCallback((): Message[] => {
     try {
-      const initialMessages = t('chat.initialMessages', { returnObjects: true });
-      
+      const initialMessages = t("chat.initialMessages", {
+        returnObjects: true,
+      });
+
       if (Array.isArray(initialMessages)) {
         return initialMessages.map((text, index) => ({
           id: index + 1,
@@ -32,7 +34,7 @@ const ChatWidget = () => {
           timestamp: new Date(Date.now() - (300000 - index * 60000)),
         }));
       }
-      
+
       return [
         {
           id: 1,
@@ -84,7 +86,7 @@ const ChatWidget = () => {
     const timer = setTimeout(() => {
       setHasAppeared(true);
     }, 500);
-    
+
     return () => clearTimeout(timer);
   }, []);
 
@@ -103,13 +105,15 @@ const ChatWidget = () => {
 
     setTimeout(() => {
       try {
-        const responses = t('chat.responses', { returnObjects: true });
-        
+        const responses = t("chat.responses", { returnObjects: true });
+
         let responseText: string;
         if (Array.isArray(responses) && responses.length > 0) {
-          responseText = responses[Math.floor(Math.random() * responses.length)];
+          responseText =
+            responses[Math.floor(Math.random() * responses.length)];
         } else {
-          responseText = "Thank you for your message! We'll get back to you soon.";
+          responseText =
+            "Thank you for your message! We'll get back to you soon.";
         }
 
         const botResponse: Message = {
@@ -141,112 +145,134 @@ const ChatWidget = () => {
     <div ref={chatContainerRef}>
       <AnimatePresence>
         {isChatOpen ? (
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9, y: 20 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.9, y: 20 }}
-            transition={{ duration: 0.3 }}
-            className="flex flex-col bg-white rounded-2xl shadow-2xl border border-gray-200 w-[380px] h-[500px] overflow-hidden"
-          >
-            {/* Chat Header */}
-            <div className="bg-[#0A66C2] text-white p-4 flex items-center justify-between">
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center">
-                  <Bot size={20} />
-                </div>
-                <div>
-                  <h3 className="font-bold">{t('chat.title')}</h3>
-                  <p className="text-xs opacity-80">{t('chat.subtitle')}</p>
-                </div>
-              </div>
-              <button
-                onClick={() => setIsChatOpen(false)}
-                className="p-2 hover:bg-white/20 rounded-full transition-colors"
-                aria-label={t('contact.form.submitting') || "Close chat"}
-              >
-                <X size={20} />
-              </button>
-            </div>
+          <>
+            {/* Mobile backdrop */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="fixed inset-0 bg-black/30 backdrop-blur-sm z-40 md:bg-transparent md:backdrop-blur-0"
+              onClick={() => setIsChatOpen(false)}
+            />
 
-            {/* Messages Container */}
-            <div className="flex-1 p-4 overflow-y-auto bg-gray-50">
-              <div className="space-y-4">
-                {messages.map((msg) => (
-                  <motion.div
-                    key={msg.id}
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.2 }}
-                    className={`flex ${
-                      msg.sender === "user" ? "justify-end" : "justify-start"
-                    }`}
-                  >
-                    <div
-                      className={`max-w-[80%] rounded-2xl p-3 ${
-                        msg.sender === "user"
-                          ? "bg-[#0A66C2] text-white rounded-br-none"
-                          : "bg-white border border-gray-200 rounded-bl-none"
-                      }`}
-                    >
-                      <div className="flex items-center gap-2 mb-1">
-                        {msg.sender === "bot" ? (
-                          <Bot size={14} className="text-[#0A66C2]" />
-                        ) : (
-                          <User size={14} className="text-white" />
-                        )}
-                        <span className="text-xs opacity-80">
-                          {msg.sender === "bot" ? t('chat.botName') : t('chat.user')}
-                        </span>
-                        <span className="text-xs opacity-60">
-                          {formatTime(msg.timestamp)}
-                        </span>
-                      </div>
-                      <p className="text-sm">{msg.text}</p>
-                    </div>
-                  </motion.div>
-                ))}
-                <div ref={messagesEndRef} />
-              </div>
-            </div>
-
-            {/* Input Area */}
-            <div className="border-t border-gray-200 p-4">
-              <div className="flex gap-2">
-                <input
-                  type="text"
-                  value={message}
-                  onChange={(e) => setMessage(e.target.value)}
-                  onKeyPress={handleKeyPress}
-                  placeholder={t('chat.placeholder')}
-                  className="flex-1 px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#0A66C2] focus:border-transparent"
-                />
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.9, y: 20 }}
+              transition={{ duration: 0.3 }}
+              className="fixed md:relative flex flex-col bg-white rounded-2xl shadow-2xl border border-gray-200 
+                         w-[calc(100vw-2rem)] md:w-[380px] 
+                         h-[85vh] md:h-[500px] 
+                         top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 
+                         md:top-auto md:left-auto md:right-0 md:bottom-0 md:transform-none 
+                         overflow-hidden z-50"
+              style={{
+                maxWidth: "calc(100vw - 2rem)",
+                maxHeight: "85vh",
+              }}
+            >
+              {/* Chat Header */}
+              <div className="bg-[#0A66C2] text-white p-4 flex items-center justify-between">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center">
+                    <Bot size={20} />
+                  </div>
+                  <div>
+                    <h3 className="font-bold">{t("chat.title")}</h3>
+                    <p className="text-xs opacity-80">{t("chat.subtitle")}</p>
+                  </div>
+                </div>
                 <button
-                  onClick={sendMessage}
-                  disabled={!message.trim()}
-                  className="bg-[#0A66C2] text-white p-3 rounded-xl hover:bg-[#0550a0] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-                  aria-label={t('contact.form.submit') || "Send message"}
+                  onClick={() => setIsChatOpen(false)}
+                  className="p-2 hover:bg-white/20 rounded-full transition-colors"
+                  aria-label={t("contact.form.submitting") || "Close chat"}
                 >
-                  <Send size={20} />
+                  <X size={20} />
                 </button>
               </div>
-              <p className="text-xs text-gray-500 text-center mt-2">
-                {t('chat.availability')}
-              </p>
-            </div>
-          </motion.div>
+
+              {/* Messages Container */}
+              <div className="flex-1 p-4 overflow-y-auto bg-gray-50">
+                <div className="space-y-4">
+                  {messages.map((msg) => (
+                    <motion.div
+                      key={msg.id}
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.2 }}
+                      className={`flex ${
+                        msg.sender === "user" ? "justify-end" : "justify-start"
+                      }`}
+                    >
+                      <div
+                        className={`max-w-[85%] md:max-w-[80%] rounded-2xl p-3 ${
+                          msg.sender === "user"
+                            ? "bg-[#0A66C2] text-white rounded-br-none"
+                            : "bg-white border border-gray-200 rounded-bl-none"
+                        }`}
+                      >
+                        <div className="flex items-center gap-2 mb-1">
+                          {msg.sender === "bot" ? (
+                            <Bot size={14} className="text-[#0A66C2]" />
+                          ) : (
+                            <User size={14} className="text-white" />
+                          )}
+                          <span className="text-xs opacity-80">
+                            {msg.sender === "bot"
+                              ? t("chat.botName")
+                              : t("chat.user")}
+                          </span>
+                          <span className="text-xs opacity-60">
+                            {formatTime(msg.timestamp)}
+                          </span>
+                        </div>
+                        <p className="text-sm break-words">{msg.text}</p>
+                      </div>
+                    </motion.div>
+                  ))}
+                  <div ref={messagesEndRef} />
+                </div>
+              </div>
+
+              {/* Input Area */}
+              <div className="border-t border-gray-200 p-4">
+                <div className="flex gap-2">
+                  <input
+                    type="text"
+                    value={message}
+                    onChange={(e) => setMessage(e.target.value)}
+                    onKeyPress={handleKeyPress}
+                    placeholder={t("chat.placeholder")}
+                    className="flex-1 px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#0A66C2] focus:border-transparent text-sm md:text-base"
+                  />
+                  <button
+                    onClick={sendMessage}
+                    disabled={!message.trim()}
+                    className="bg-[#0A66C2] text-white p-3 rounded-xl hover:bg-[#0550a0] transition-colors disabled:opacity-50 disabled:cursor-not-allowed shrink-0"
+                    aria-label={t("contact.form.submit") || "Send message"}
+                  >
+                    <Send size={20} />
+                  </button>
+                </div>
+                <p className="text-xs text-gray-500 text-center mt-2 px-2">
+                  {t("chat.availability")}
+                </p>
+              </div>
+            </motion.div>
+          </>
         ) : (
           <motion.button
             initial={{ opacity: 0, scale: 0.5, y: 50 }}
-            animate={{ 
-              opacity: hasAppeared ? 1 : 0, 
+            animate={{
+              opacity: hasAppeared ? 1 : 0,
               scale: hasAppeared ? 1 : 0.5,
-              y: hasAppeared ? 0 : 50
+              y: hasAppeared ? 0 : 50,
             }}
-            transition={{ 
+            transition={{
               duration: 0.8,
               type: "spring",
               stiffness: 200,
-              damping: 15
+              damping: 15,
             }}
             whileHover={{ scale: 1.1, rotate: 5 }}
             whileTap={{ scale: 0.9 }}
