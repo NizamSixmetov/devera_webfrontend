@@ -71,7 +71,7 @@ export default function Projects() {
                 />
               </div>
               <div className="p-10">
-                <a className="flex justify-between items-start mb-4">
+                <div className="flex justify-between items-start mb-4">
                   <div>
                     <p className="text-sm font-bold text-[#7C3AED] uppercase tracking-wider mb-2">
                       {project.category}
@@ -83,7 +83,7 @@ export default function Projects() {
                   <a href="#" className="w-12 h-12 rounded-full bg-gray-50 flex items-center justify-center text-gray-400 group-hover:bg-[#0A66C2] group-hover:text-white transition-colors cursor-pointer">
                     <ExternalLink size={20} />
                   </a>
-                </a>
+                </div>
                 <p className="text-[#6B7280] leading-relaxed">{project.desc}</p>
               </div>
             </motion.div>
