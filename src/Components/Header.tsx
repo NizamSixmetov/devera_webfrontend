@@ -1,52 +1,68 @@
-import { useState, useEffect } from "react";
-import { Menu, X } from "lucide-react";
+import { useState, useEffect, useRef } from "react";
+import { Menu, X, ChevronDown } from "lucide-react";
+import { useTranslation } from "react-i18next";
+import i18n from "i18next";
 
 const navItems = [
-  { name: "About", id: "about" },
-  { name: "Services", id: "services" },
-  { name: "Why Devera", id: "why" },
-  { name: "Projects", id: "projects" },
-  { name: "Contact", id: "contact" },
+  { key: "about", id: "about" },
+  { key: "services", id: "services" },
+  { key: "why", id: "why" },
+  { key: "projects", id: "projects" },
+  { key: "contact", id: "contact" },
+];
+
+const languages = [
+  { code: "en", label: "English" },
+  { code: "ru", label: "Русский" },
+  { code: "az", label: "Azərbaycan" },
 ];
 
 export default function Header() {
+  const { t } = useTranslation();
+
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("");
+  const [isLangOpen, setIsLangOpen] = useState(false);
 
-  // Handle scroll effect for shadow and blur
+  const langRef = useRef<HTMLDivElement>(null);
+
+  // Scroll effect
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-    };
+    const handleScroll = () => setIsScrolled(window.scrollY > 20);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Intersection Observer for active section highlighting
+  // Close language dropdown on outside click
   useEffect(() => {
-    const observerOptions = {
-      root: null,
-      rootMargin: "-100px 0px -70% 0px",
-      threshold: 0,
+    const handleClickOutside = (e: MouseEvent) => {
+      if (langRef.current && !langRef.current.contains(e.target as Node)) {
+        setIsLangOpen(false);
+      }
     };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
 
-    const observerCallback = (entries: IntersectionObserverEntry[]) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          setActiveSection(entry.target.id);
-        }
-      });
-    };
-
+  // Active section observer
+  useEffect(() => {
     const observer = new IntersectionObserver(
-      observerCallback,
-      observerOptions,
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) setActiveSection(entry.target.id);
+        });
+      },
+      {
+        root: null,
+        rootMargin: "-100px 0px -70% 0px",
+        threshold: 0,
+      }
     );
 
     navItems.forEach((item) => {
-      const element = document.getElementById(item.id);
-      if (element) observer.observe(element);
+      const el = document.getElementById(item.id);
+      if (el) observer.observe(el);
     });
 
     return () => observer.disconnect();
@@ -55,20 +71,23 @@ export default function Header() {
   const scrollToSection = (e: React.MouseEvent<HTMLElement>, id: string) => {
     e.preventDefault();
     const element = document.getElementById(id);
-    if (element) {
-      const offset = 80; // Height of the fixed navbar
-      const bodyRect = document.body.getBoundingClientRect().top;
-      const elementRect = element.getBoundingClientRect().top;
-      const elementPosition = elementRect - bodyRect;
-      const offsetPosition = elementPosition - offset;
+    if (!element) return;
 
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: "smooth",
-      });
-    }
+    const offset = 80;
+    const y = element.getBoundingClientRect().top + window.pageYOffset - offset;
+
+    window.scrollTo({ top: y, behavior: "smooth" });
     setIsMenuOpen(false);
   };
+
+  const changeLanguage = (lng: string) => {
+    i18n.changeLanguage(lng);
+    localStorage.setItem("lang", lng);
+    setIsLangOpen(false);
+  };
+
+  const currentLang =
+    languages.find((l) => l.code === i18n.language) || languages[0];
 
   return (
     <header
@@ -86,38 +105,74 @@ export default function Header() {
           className="text-2xl font-bold tracking-tighter text-[#0A66C2] flex items-center gap-2"
         >
           <div className="w-8 h-8 bg-[#0A66C2] rounded-lg flex items-center justify-center">
-            <div className="w-4 h-4 bg-white rounded-sm rotate-45"></div>
+            <div className="w-4 h-4 bg-white rounded-sm rotate-45" />
           </div>
           DEVERA
         </a>
 
         {/* Desktop Nav */}
-        <nav className="hidden md:flex items-center gap-8">
+        <nav className="hidden md:flex items-center gap-5.5">
           {navItems.map((item) => (
             <a
               key={item.id}
               href={`#${item.id}`}
               onClick={(e) => scrollToSection(e, item.id)}
-              className={`text-sm font-medium transition-colors duration-200 ${
+              className={`text-sm font-medium transition-colors ${
                 activeSection === item.id
                   ? "text-[#0A66C2]"
                   : "text-[#6B7280] hover:text-[#0A66C2]"
               }`}
             >
-              {item.name}
+              {t(`nav.${item.key}`)}
             </a>
           ))}
+
+          {/* Language Dropdown BETWEEN Contact and Button */}
+          <div ref={langRef} className="relative">
+            <button
+              onClick={() => setIsLangOpen((v) => !v)}
+              className="flex items-center gap-2 px-4 py-2 rounded-full border border-gray-200 text-sm font-medium text-[#6B7280] hover:text-[#0A66C2] transition"
+            >
+              {currentLang.label}
+              <ChevronDown
+                size={16}
+                className={`transition-transform ${
+                  isLangOpen ? "rotate-180" : ""
+                }`}
+              />
+            </button>
+
+            {isLangOpen && (
+              <div className="absolute right-0 mt-2 w-32 bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden">
+                {languages.map((lng) => (
+                  <button
+                    key={lng.code}
+                    onClick={() => changeLanguage(lng.code)}
+                    className={`w-full text-left px-4 py-2 text-sm transition ${
+                      i18n.language === lng.code
+                        ? "bg-[#0A66C2] text-white"
+                        : "text-gray-600 hover:bg-gray-50"
+                    }`}
+                  >
+                    {lng.label}
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
+
+          {/* Start Project Button LAST */}
           <button
             onClick={(e) => scrollToSection(e, "contact")}
-            className="bg-[#7C3AED] hover:bg-[#6D28D9] text-white px-5 py-2 rounded-full text-sm font-semibold transition-all active:scale-95 shadow-lg shadow-purple-200"
+            className="bg-[#7C3AED] hover:bg-[#6D28D9] text-white px-5 py-2 rounded-full text-sm font-semibold transition-all active:scale-95 shadow-lg shadow-purple-200 cursor-pointer"
           >
-            Start a Project
+            {t("nav.start")}
           </button>
         </nav>
 
-        {/* Mobile Menu Toggle */}
+        {/* Mobile Toggle */}
         <button
-          className="md:hidden p-2 text-[#6B7280]"
+          className="md:hidden p-2 text-[#6B7280] cursor-pointer"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
           aria-label="Toggle menu"
         >
@@ -125,10 +180,10 @@ export default function Header() {
         </button>
       </div>
 
-      {/* Mobile Nav Drawer */}
+      {/* Mobile Menu */}
       <div
         className={`md:hidden absolute top-full left-0 right-0 bg-white border-t border-gray-100 transition-all duration-300 overflow-hidden ${
-          isMenuOpen ? "max-h-[400px] opacity-100" : "max-h-0 opacity-0"
+          isMenuOpen ? "min-h-screen opacity-100" : "max-h-0 opacity-0"
         }`}
       >
         <nav className="flex flex-col p-6 gap-4">
@@ -141,20 +196,35 @@ export default function Header() {
                 activeSection === item.id ? "text-[#0A66C2]" : "text-[#6B7280]"
               }`}
             >
-              {item.name}
+              {t(`nav.${item.key}`)}
             </a>
           ))}
+
+          {/* Mobile Language */}
+          <div className="border rounded-xl overflow-hidden mt-2">
+            {languages.map((lng) => (
+              <button
+                key={lng.code}
+                onClick={() => { changeLanguage(lng.code); setIsMenuOpen(false); }}
+                className={`w-full px-4 py-3 text-left text-sm cursor-pointer ${
+                  i18n.language === lng.code
+                    ? "bg-[#0A66C2] text-white"
+                    : "bg-white text-gray-600 hover:bg-[#0A66C2] hover:text-white"
+                }`}
+              >
+                {lng.label}
+              </button>
+            ))}
+          </div>
+
           <button
             onClick={(e) => scrollToSection(e, "contact")}
-            className="bg-[#7C3AED] text-white px-6 py-3 rounded-xl text-center font-semibold mt-2"
+            className="bg-[#7C3AED] text-white px-6 py-3 rounded-xl font-semibold mt-3 cursor-pointer"
           >
-            Start a Project
+            {t("nav.start")}
           </button>
         </nav>
       </div>
     </header>
   );
 }
-
-
-
