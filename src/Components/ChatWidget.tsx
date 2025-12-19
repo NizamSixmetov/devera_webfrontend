@@ -1,5 +1,5 @@
 import { Bot, MessageCircle, Send, User, X } from "lucide-react";
-import { useState, useEffect, useCallback, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useTranslation } from "react-i18next";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -11,17 +11,10 @@ interface Message {
 }
 
 const ChatWidget = () => {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const [isChatOpen, setIsChatOpen] = useState(false);
   const [message, setMessage] = useState("");
-  const [messages, setMessages] = useState<Message[]>([]);
-  const [hasAppeared, setHasAppeared] = useState(false);
-
-  const chatContainerRef = useRef<HTMLDivElement>(null);
-  const messagesEndRef = useRef<HTMLDivElement>(null);
-  const inputRef = useRef<HTMLInputElement>(null);
-
-  const getInitialMessages = useCallback((): Message[] => {
+  const [messages, setMessages] = useState<Message[]>(() => {
     try {
       const initialMessages = t("chat.initialMessages", {
         returnObjects: true,
@@ -54,11 +47,12 @@ const ChatWidget = () => {
       console.error("Error getting initial messages:", error);
       return [];
     }
-  }, [t]);
+  });
+  const [hasAppeared, setHasAppeared] = useState(false);
 
-  useEffect(() => {
-    setMessages(getInitialMessages());
-  }, [getInitialMessages, i18n.language]);
+  const chatContainerRef = useRef<HTMLDivElement>(null);
+  const messagesEndRef = useRef<HTMLDivElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     if (messagesEndRef.current && isChatOpen) {
