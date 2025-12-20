@@ -1,14 +1,25 @@
 import { motion } from "motion/react";
 import { useTranslation } from "react-i18next";
 import { ArrowRight, ChevronRight } from "lucide-react";
+import { useMemo } from "react";
 
 export default function Hero() {
   const { t } = useTranslation();
+  const technologies = useMemo(() => [
+  { name: "React", src: "https://cdn.worldvectorlogo.com/logos/react-2.svg" },
+  { name: "Next.js", src: "https://cdn.worldvectorlogo.com/logos/next-js.svg" },
+  { name: "Node.js", src: "https://cdn.worldvectorlogo.com/logos/nodejs-icon.svg" },
+  { name: "TypeScript", src: "https://cdn.worldvectorlogo.com/logos/typescript.svg" },
+  { name: "Tailwind", src: "https://cdn.worldvectorlogo.com/logos/tailwind-css-2.svg" },
+  { name: "Framer Motion", src: "https://cdn.worldvectorlogo.com/logos/framer-motion.svg" },
+  { name: "PostgreSQL", src: "https://cdn.worldvectorlogo.com/logos/postgresql.svg" },
+  { name: "Docker", src: "https://cdn.worldvectorlogo.com/logos/docker-4.svg" },
+], []);
 
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex items-center pt-20 overflow-hidden bg-white dark:bg-[#0a0a0a] transition-colors duration-300"
+      className="relative min-h-screen flex items-center pt-20 overflow-hidden bg-white dark:bg-[#0a0a0a] transition-colors duration-300 flex-col"
     >
       {/* Background Decorative Elements */}
       <div className="absolute top-0 right-0 w-1/2 h-full bg-linear-to-l from-blue-50/50 to-transparent dark:from-blue-900/10 -z-10" />
@@ -62,25 +73,6 @@ export default function Hero() {
               <ChevronRight size={20} className="text-[#0A66C2]" />
             </button>
           </div>
-
-          {/* Partner Logos */}
-          <div className="mt-16 flex items-center gap-8 opacity-50 grayscale dark:invert dark:opacity-40">
-            <img
-              src="https://asset.brandfetch.io/idKhWTXUYD/ido1FR4Fb6.svg"
-              alt="Partner"
-              className="h-6"
-            />
-            <img
-              src="https://asset.brandfetch.io/idppUHPQLW/idFbgX89XR.svg"
-              alt="Partner"
-              className="h-6"
-            />
-            <img
-              src="https://asset.brandfetch.io/idv5qixSAX/idjGPg5Sr9.svg"
-              alt="Partner"
-              className="h-6"
-            />
-          </div>
         </motion.div>
 
         {/* Right Column: Dashboard Image & Floating Cards */}
@@ -90,7 +82,7 @@ export default function Hero() {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="relative hidden lg:block"
         >
-          <div className="relative z-10 bg-white dark:bg-gray-900 rounded-[40px] border border-gray-100 dark:border-gray-800 shadow-2xl p-4 overflow-hidden">
+          <div className="relative z-10 bg-white dark:bg-gray-900 rounded-[40px] border border-gray-100 dark:border-gray-800 shadow-2xl p-4 overflow-hidden mt-10">
             <img
               src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80"
               alt="DEVERA Dashboard"
@@ -151,6 +143,38 @@ export default function Hero() {
 
           {/* Decorative Blur Circle */}
           <div className="absolute -bottom-10 -right-10 w-64 h-64 bg-[#0A66C2]/10 rounded-full blur-3xl -z-10" />
+        </motion.div>
+      </div>
+
+      {/* Technology Scroll */}
+      <div className="mt-20 overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_20%,black_80%,transparent)] w-full">
+        <motion.div
+          className="flex gap-12 items-center w-max"
+          animate={{
+            x: [0, -1000], // left to right movement
+          }}
+          transition={{
+            duration: 20, // Speed of movement (the larger the number, the slower)
+            repeat: Infinity,
+            ease: "linear",
+          }}
+        >
+          {/* Duplicate the array for seamless scrolling */}
+          {[...technologies, ...technologies].map((tech, idx) => (
+            <div
+              key={idx}
+              className="flex items-center gap-3 grayscale opacity-60 hover:opacity-100 hover:grayscale-0 transition-all duration-300"
+            >
+              <img
+                src={tech.src}
+                alt={tech.name}
+                className="h-8 w-auto object-contain dark:invert-[0.1]"
+              />
+              <span className="text-gray-500 dark:text-gray-400 font-medium tracking-tight">
+                {tech.name}
+              </span>
+            </div>
+          ))}
         </motion.div>
       </div>
 
