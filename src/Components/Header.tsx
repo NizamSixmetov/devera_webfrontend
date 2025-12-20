@@ -1,7 +1,7 @@
-import { useState, useEffect, useRef } from "react";
-import { Menu, X, ChevronDown } from "lucide-react";
-import { useTranslation } from "react-i18next";
 import i18n from "i18next";
+import { useTranslation } from "react-i18next";
+import { useState, useEffect, useRef } from "react";
+import { Menu, X, ChevronDown, Sun, Moon } from "lucide-react";
 
 const navItems = [
   { key: "about", id: "about" },
@@ -12,9 +12,9 @@ const navItems = [
 ];
 
 const languages = [
-  { code: "az", label: "Azərbaycan" },
-  { code: "en", label: "English" },
-  { code: "ru", label: "Русский" },
+  { code: "az", label: "Azərbaycan", flag: "🇦🇿" },
+  { code: "en", label: "English", flag: "🇺🇸" },
+  { code: "ru", label: "Русский", flag: "🇷🇺" },
 ];
 
 export default function Header() {
@@ -25,7 +25,29 @@ export default function Header() {
   const [activeSection, setActiveSection] = useState("");
   const [isLangOpen, setIsLangOpen] = useState(false);
 
+  const [theme, setTheme] = useState(() => {
+    if (typeof window !== "undefined") {
+      return document.documentElement.classList.contains("dark")
+        ? "dark"
+        : "light";
+    }
+    return "light";
+  });
+
   const langRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (theme === "dark") {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+    localStorage.setItem("theme", theme);
+  }, [theme]);
+
+  const toggleTheme = () => {
+    setTheme((prev) => (prev === "light" ? "dark" : "light"));
+  };
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 20);
@@ -90,97 +112,107 @@ export default function Header() {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? "bg-white/80 backdrop-blur-md shadow-sm py-3"
-          : "bg-white py-5"
+          ? "bg-white/80 dark:bg-[#0a0a0a]/80 backdrop-blur-md shadow-sm py-3"
+          : "bg-white dark:bg-[#0a0a0a] py-5"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
+      <div className="max-w-7xl mx-auto px-6 flex items-center justify-between gap-4">
         {/* Logo */}
         <a
           href="#"
           onClick={(e) => scrollToSection(e, "hero")}
-          className="text-2xl font-bold tracking-tighter text-[#0A66C2] flex items-center gap-2"
+          className="text-2xl font-bold tracking-tighter text-[#0A66C2] dark:text-white flex items-center gap-2 shrink-0"
         >
-          <div className="w-8 h-8 bg-[#0A66C2] rounded-lg flex items-center justify-center">
+          <div className="w-8 h-8 bg-[#0A66C2] dark:bg-blue-600 rounded-lg flex items-center justify-center shrink-0">
             <div className="w-4 h-4 bg-white rounded-sm rotate-45" />
           </div>
           DEVERA
         </a>
 
         {/* Desktop Nav */}
-        <nav className="hidden md:flex items-center gap-5.5">
+        <nav className="hidden md:flex items-center justify-center gap-x-4 lg:gap-x-8 flex-1">
           {navItems.map((item) => (
             <a
               key={item.id}
               href={`#${item.id}`}
               onClick={(e) => scrollToSection(e, item.id)}
-              className={`text-sm font-medium transition-colors ${
+              className={`text-[13px] lg:text-sm font-medium transition-colors whitespace-nowrap ${
                 activeSection === item.id
-                  ? "text-[#0A66C2]"
-                  : "text-[#6B7280] hover:text-[#0A66C2]"
+                  ? "text-[#0A66C2] dark:text-blue-400"
+                  : "text-[#6B7280] dark:text-gray-400 hover:text-[#0A66C2] dark:hover:text-white"
               }`}
             >
               {t(`nav.${item.key}`)}
             </a>
           ))}
+        </nav>
 
-          {/* Language Dropdown BETWEEN Contact and Button */}
-          <div ref={langRef} className="relative">
+        {/* Right Side Actions */}
+        <div className="flex items-center gap-2 lg:gap-4 shrink-0">
+          {/* Theme Toggle */}
+          <button
+            onClick={toggleTheme}
+            className="p-2 rounded-full border border-gray-200 dark:border-gray-800 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors cursor-pointer shrink-0"
+          >
+            {theme === "light" ? <Moon size={18} /> : <Sun size={18} />}
+          </button>
+
+          <div ref={langRef} className="relative hidden sm:block shrink-0">
             <button
               onClick={() => setIsLangOpen((v) => !v)}
-              className="flex items-center gap-2 px-4 py-2 rounded-full border border-gray-200 text-sm font-medium text-[#0A66C2] hover:text-[#0A66C2] transition"
+              className="flex items-center gap-2 px-3 py-2 rounded-full border border-gray-200 dark:border-gray-800 text-sm font-medium text-[#0A66C2] dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-800 transition cursor-pointer"
             >
-              {currentLang.label}
+              <span className="text-lg leading-none">{currentLang.flag}</span>
               <ChevronDown
-                size={16}
-                className={`transition-transform ${
+                size={14}
+                className={`transition-transform duration-200 ${
                   isLangOpen ? "rotate-180" : ""
                 }`}
               />
             </button>
 
             {isLangOpen && (
-              <div className="absolute right-0 mt-2 w-32 bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden">
+              <div className="absolute right-0 mt-2 w-40 bg-white dark:bg-gray-900 rounded-xl shadow-xl border border-gray-100 dark:border-gray-800 overflow-hidden animate-in fade-in zoom-in duration-200">
                 {languages.map((lng) => (
                   <button
                     key={lng.code}
                     onClick={() => changeLanguage(lng.code)}
-                    className={`w-full text-left px-4 py-2 text-sm transition ${
+                    className={`w-full flex items-center gap-3 px-4 py-2.5 text-sm transition cursor-pointer ${
                       i18n.language === lng.code
                         ? "bg-[#0A66C2] text-white"
-                        : "text-gray-600 hover:text-[#0A66C2] cursor-pointer"
+                        : "text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800"
                     }`}
                   >
-                    {lng.label}
+                    <span className="text-base">{lng.flag}</span>
+                    <span>{lng.label}</span>
                   </button>
                 ))}
               </div>
             )}
           </div>
 
-          {/* Start Project Button LAST */}
-          <button
+          {/* Start Project Button */}
+          {/* <button
             onClick={(e) => scrollToSection(e, "contact")}
-            className="bg-[#7C3AED] hover:bg-[#6D28D9] text-white px-5 py-2 rounded-full text-sm font-semibold transition-all active:scale-95 shadow-lg shadow-purple-200 cursor-pointer"
+            className="hidden md:block bg-[#7C3AED] hover:bg-[#6D28D9] text-white px-5 lg:px-6 py-2 rounded-full text-sm font-semibold transition-all active:scale-95 shadow-lg shadow-purple-200 dark:shadow-none cursor-pointer whitespace-nowrap shrink-0"
           >
             {t("nav.start")}
-          </button>
-        </nav>
+          </button> */}
 
-        {/* Mobile Toggle */}
-        <button
-          className="md:hidden p-2 text-[#6B7280] cursor-pointer"
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
-          aria-label="Toggle menu"
-        >
-          {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
+          {/* Burger Button */}
+          <button
+            className="md:hidden p-2 text-[#6B7280] dark:text-gray-400 cursor-pointer"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+          >
+            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+        </div>
       </div>
 
       {/* Mobile Menu */}
       <div
-        className={`md:hidden absolute top-full left-0 right-0 bg-white border-t border-gray-100 transition-all duration-300 overflow-hidden ${
-          isMenuOpen ? "min-h-screen opacity-100" : "max-h-0 opacity-0"
+        className={`md:hidden absolute top-full left-0 right-0 bg-white dark:bg-[#0a0a0a] border-t border-gray-100 dark:border-gray-900 transition-all duration-300 overflow-hidden ${
+          isMenuOpen ? "h-screen opacity-100" : "h-0 opacity-0"
         }`}
       >
         <nav className="flex flex-col p-6 gap-4">
@@ -190,36 +222,44 @@ export default function Header() {
               href={`#${item.id}`}
               onClick={(e) => scrollToSection(e, item.id)}
               className={`text-lg font-medium ${
-                activeSection === item.id ? "text-[#0A66C2]" : "text-[#6B7280]"
+                activeSection === item.id
+                  ? "text-[#0A66C2] dark:text-blue-400"
+                  : "text-[#6B7280] dark:text-gray-400"
               }`}
             >
               {t(`nav.${item.key}`)}
             </a>
           ))}
 
-          {/* Mobile Language */}
-          <div className="border rounded-xl overflow-hidden mt-2">
-            {languages.map((lng) => (
-              <button
-                key={lng.code}
-                onClick={() => {
-                  changeLanguage(lng.code);
-                  setIsMenuOpen(false);
-                }}
-                className={`w-full px-4 py-3 text-left text-sm cursor-pointer ${
-                  i18n.language === lng.code
-                    ? "bg-[#0A66C2] text-white"
-                    : "bg-white text-gray-600 hover:bg-[#0A66C2] hover:text-white"
-                }`}
-              >
-                {lng.label}
-              </button>
-            ))}
+          {/* Mobile Language Selection with Flags */}
+          <div className="grid grid-cols-1 gap-2 mt-2">
+            <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider px-1">
+              {t("chat.language") || "Language"}
+            </p>
+            <div className="border dark:border-gray-800 rounded-2xl overflow-hidden shadow-sm">
+              {languages.map((lng) => (
+                <button
+                  key={lng.code}
+                  onClick={() => {
+                    changeLanguage(lng.code);
+                    setIsMenuOpen(false);
+                  }}
+                  className={`w-full flex items-center gap-4 px-4 py-4 text-left text-sm cursor-pointer transition-colors ${
+                    i18n.language === lng.code
+                      ? "bg-[#0A66C2] text-white"
+                      : "bg-white dark:bg-gray-900 text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800 border-b border-gray-50 dark:border-gray-800 last:border-none"
+                  }`}
+                >
+                  <span className="text-xl">{lng.flag}</span>
+                  <span className="font-medium">{lng.label}</span>
+                </button>
+              ))}
+            </div>
           </div>
 
           <button
             onClick={(e) => scrollToSection(e, "contact")}
-            className="bg-[#7C3AED] text-white px-6 py-3 rounded-xl font-semibold mt-3 cursor-pointer"
+            className="bg-[#7C3AED] text-white px-6 py-4 rounded-2xl font-semibold mt-4 shadow-lg shadow-purple-200 dark:shadow-none cursor-pointer"
           >
             {t("nav.start")}
           </button>
