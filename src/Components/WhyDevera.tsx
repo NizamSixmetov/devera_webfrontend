@@ -1,40 +1,43 @@
 import { motion } from "motion/react";
-import { CheckCircle2, Users, Globe, Award } from "lucide-react";
 import { useTranslation } from "react-i18next";
+import { CheckCircle2, Users, Globe, Award } from "lucide-react";
 
 export default function WhyDevera() {
   const { t } = useTranslation();
 
   const benefits = [
     {
-      icon: <Users className="text-[#0A66C2]" />,
+      icon: <Users className="text-[#0A66C2] dark:text-blue-500" />,
       title: t("whyDevera.benefits.seniorTeam.title"),
       desc: t("whyDevera.benefits.seniorTeam.desc"),
     },
     {
-      icon: <Globe className="text-[#7C3AED]" />,
+      icon: <Globe className="text-[#7C3AED] dark:text-purple-400" />,
       title: t("whyDevera.benefits.globalStandards.title"),
       desc: t("whyDevera.benefits.globalStandards.desc"),
     },
     {
-      icon: <Award className="text-[#0A66C2]" />,
+      icon: <Award className="text-[#0A66C2] dark:text-blue-500" />,
       title: t("whyDevera.benefits.qualityFirst.title"),
       desc: t("whyDevera.benefits.qualityFirst.desc"),
     },
     {
-      icon: <CheckCircle2 className="text-[#7C3AED]" />,
+      icon: <CheckCircle2 className="text-[#7C3AED] dark:text-purple-400" />,
       title: t("whyDevera.benefits.transparentProcess.title"),
       desc: t("whyDevera.benefits.transparentProcess.desc"),
     },
   ];
 
   return (
-    <section id="why" className="py-24 bg-white">
+    <section
+      id="why"
+      className="py-24 bg-white dark:bg-[#0a0a0a] transition-colors duration-300"
+    >
       <div className="max-w-7xl mx-auto px-6">
-        <div className="bg-[#0A66C2] rounded-[60px] p-12 md:p-20 text-white relative overflow-hidden">
+        <div className="bg-[#0A66C2] dark:bg-blue-900/20 rounded-[60px] p-12 md:p-20 text-white relative overflow-hidden border border-transparent dark:border-blue-500/20 transition-colors duration-300">
           {/* Decorative background */}
-          <div className="absolute top-0 right-0 w-96 h-96 bg-white/10 rounded-full blur-3xl -mr-48 -mt-48" />
-          <div className="absolute bottom-0 left-0 w-64 h-64 bg-purple-500/20 rounded-full blur-3xl -ml-32 -mb-32" />
+          <div className="absolute top-0 right-0 w-96 h-96 bg-white/10 dark:bg-blue-500/5 rounded-full blur-3xl -mr-48 -mt-48" />
+          <div className="absolute bottom-0 left-0 w-64 h-64 bg-purple-500/20 dark:bg-purple-500/10 rounded-full blur-3xl -ml-32 -mb-32" />
 
           <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div>
@@ -53,7 +56,7 @@ export default function WhyDevera() {
                     .getElementById("contact")
                     ?.scrollIntoView({ behavior: "smooth" })
                 }
-                className="bg-white text-[#0A66C2] px-8 py-4 rounded-full font-bold hover:bg-gray-100 transition-all active:scale-95 cursor-pointer"
+                className="bg-white text-[#0A66C2] dark:bg-white dark:text-blue-900 px-8 py-4 rounded-full font-bold hover:bg-gray-100 transition-all active:scale-95 cursor-pointer"
               >
                 {t("whyDevera.cta")}
               </button>
@@ -67,7 +70,7 @@ export default function WhyDevera() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: idx * 0.1 }}
-                  className="bg-white/10 backdrop-blur-sm p-8 rounded-3xl border border-white/10"
+                  className="bg-white/10 dark:bg-white/5 backdrop-blur-sm p-8 rounded-3xl border border-white/10"
                 >
                   <div className="w-12 h-12 bg-white rounded-2xl flex items-center justify-center mb-6 shadow-lg">
                     {benefit.icon}
