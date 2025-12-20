@@ -1,7 +1,7 @@
-import { Bot, MessageCircle, Send, User, X } from "lucide-react";
-import { useState, useEffect, useRef } from "react";
 import { useTranslation } from "react-i18next";
+import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { Bot, MessageCircle, Send, User, X } from "lucide-react";
 
 interface Message {
   id: number;
@@ -19,7 +19,6 @@ const ChatWidget = () => {
       const initialMessages = t("chat.initialMessages", {
         returnObjects: true,
       });
-
       if (Array.isArray(initialMessages)) {
         return initialMessages.map((text, index) => ({
           id: index + 1,
@@ -28,23 +27,15 @@ const ChatWidget = () => {
           timestamp: new Date(Date.now() - (300000 - index * 60000)),
         }));
       }
-
       return [
         {
           id: 1,
-          text: "Hello! I'm Devera Support Bot. How can I help you today?",
+          text: "Hello!",
           sender: "bot" as const,
-          timestamp: new Date(Date.now() - 300000),
-        },
-        {
-          id: 2,
-          text: "Welcome to DEVERA IT Solutions! We're here to assist you.",
-          sender: "bot" as const,
-          timestamp: new Date(Date.now() - 240000),
+          timestamp: new Date(),
         },
       ];
-    } catch (error) {
-      console.error("Error getting initial messages:", error);
+    } catch {
       return [];
     }
   });
@@ -54,97 +45,73 @@ const ChatWidget = () => {
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
+  // Scroll to bottom
   useEffect(() => {
     if (messagesEndRef.current && isChatOpen) {
       messagesEndRef.current.scrollIntoView({ behavior: "smooth" });
     }
   }, [messages, isChatOpen]);
 
-  // Добавляем обработчик для закрытия по клику вне чата
+  // Click outside and ESC handlers
   useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
+    const handleClickOutside = (e: MouseEvent) => {
       if (
         isChatOpen &&
         chatContainerRef.current &&
-        !chatContainerRef.current.contains(event.target as Node)
+        !chatContainerRef.current.contains(e.target as Node)
       ) {
         setIsChatOpen(false);
       }
     };
-
+    const handleEsc = (e: KeyboardEvent) => {
+      if (e.key === "Escape" && isChatOpen) setIsChatOpen(false);
+    };
     document.addEventListener("mousedown", handleClickOutside);
+    document.addEventListener("keydown", handleEsc);
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, [isChatOpen]);
-
-  // Добавляем обработчик для закрытия по клавише Esc
-  useEffect(() => {
-    const handleEscKey = (event: KeyboardEvent) => {
-      if (event.key === "Escape" && isChatOpen) {
-        setIsChatOpen(false);
-      }
-    };
-
-    document.addEventListener("keydown", handleEscKey);
-    return () => {
-      document.removeEventListener("keydown", handleEscKey);
+      document.removeEventListener("keydown", handleEsc);
     };
   }, [isChatOpen]);
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setHasAppeared(true);
-    }, 500);
-
+    const timer = setTimeout(() => setHasAppeared(true), 500);
     return () => clearTimeout(timer);
   }, []);
 
-  // Фокус на поле ввода при открытии чата
   useEffect(() => {
     if (isChatOpen && inputRef.current) {
-      setTimeout(() => {
-        inputRef.current?.focus();
-      }, 100);
+      setTimeout(() => inputRef.current?.focus(), 100);
     }
   }, [isChatOpen]);
 
   const sendMessage = () => {
     if (!message.trim()) return;
-
     const newUserMessage: Message = {
       id: messages.length + 1,
       text: message.trim(),
       sender: "user",
       timestamp: new Date(),
     };
-
     setMessages([...messages, newUserMessage]);
     setMessage("");
 
     setTimeout(() => {
       try {
         const responses = t("chat.responses", { returnObjects: true });
-
-        let responseText: string;
-        if (Array.isArray(responses) && responses.length > 0) {
-          responseText =
-            responses[Math.floor(Math.random() * responses.length)];
-        } else {
-          responseText =
-            "Thank you for your message! We'll get back to you soon.";
-        }
-
+        const responseText =
+          Array.isArray(responses) && responses.length > 0
+            ? responses[Math.floor(Math.random() * responses.length)]
+            : "Thank you!";
         const botResponse: Message = {
           id: messages.length + 2,
           text: responseText,
           sender: "bot",
           timestamp: new Date(),
         };
-
         setMessages((prev) => [...prev, botResponse]);
-      } catch (error) {
-        console.error("Error getting bot responses:", error);
+      } catch (e) {
+        console.error(e);
       }
     }, 1000);
   };
@@ -161,26 +128,24 @@ const ChatWidget = () => {
   };
 
   return (
-    <div ref={chatContainerRef}>
+    <div ref={chatContainerRef} className="fixed bottom-6 right-6 z-[9999]">
       <AnimatePresence>
         {isChatOpen ? (
           <>
-            {/* Mobile backdrop */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="fixed inset-0 bg-black/30 backdrop-blur-sm z-40 md:bg-transparent md:backdrop-blur-0"
+              className="fixed inset-0 bg-black/30 dark:bg-black/60 backdrop-blur-sm z-40 md:bg-transparent md:backdrop-blur-0"
               onClick={() => setIsChatOpen(false)}
             />
 
-            {/* Chat Window - Separate positioning for mobile and desktop */}
             <motion.div
               initial={{ opacity: 0, scale: 0.9, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.9, y: 20 }}
               transition={{ duration: 0.3 }}
-              className="flex flex-col bg-white rounded-2xl shadow-2xl border border-gray-200 
+              className="flex flex-col bg-white dark:bg-[#121212] rounded-2xl shadow-2xl border border-gray-200 dark:border-gray-800 
                          w-[calc(100vw-2rem)] md:w-[380px] 
                          h-[85vh] md:h-[500px] 
                          overflow-hidden z-50
@@ -195,8 +160,8 @@ const ChatWidget = () => {
                 right: "2%",
               }}
             >
-              {/* Chat Header */}
-              <div className="bg-[#0A66C2] text-white p-4 flex items-center justify-between">
+              {/* Header - Dark mode adapted */}
+              <div className="bg-[#0A66C2] dark:bg-blue-700 text-white p-4 flex items-center justify-between">
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center">
                     <Bot size={20} />
@@ -209,21 +174,19 @@ const ChatWidget = () => {
                 <button
                   onClick={() => setIsChatOpen(false)}
                   className="p-2 hover:bg-white/20 rounded-full transition-colors"
-                  aria-label={t("contact.form.submitting") || "Close chat"}
                 >
                   <X size={20} />
                 </button>
               </div>
 
-              {/* Messages Container */}
-              <div className="flex-1 p-4 overflow-y-auto bg-gray-50">
+              {/* Messages Container - Dark mode adapted */}
+              <div className="flex-1 p-4 overflow-y-auto bg-gray-50 dark:bg-[#0a0a0a]">
                 <div className="space-y-4">
                   {messages.map((msg) => (
                     <motion.div
                       key={msg.id}
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.2 }}
                       className={`flex ${
                         msg.sender === "user" ? "justify-end" : "justify-start"
                       }`}
@@ -232,12 +195,15 @@ const ChatWidget = () => {
                         className={`max-w-[85%] md:max-w-[80%] rounded-2xl p-3 ${
                           msg.sender === "user"
                             ? "bg-[#0A66C2] text-white rounded-br-none"
-                            : "bg-white border border-gray-200 rounded-bl-none"
+                            : "bg-white dark:bg-[#1e1e1e] border border-gray-200 dark:border-gray-800 text-black dark:text-white rounded-bl-none shadow-sm"
                         }`}
                       >
                         <div className="flex items-center gap-2 mb-1">
                           {msg.sender === "bot" ? (
-                            <Bot size={14} className="text-[#0A66C2]" />
+                            <Bot
+                              size={14}
+                              className="text-[#0A66C2] dark:text-blue-400"
+                            />
                           ) : (
                             <User size={14} className="text-white" />
                           )}
@@ -250,7 +216,9 @@ const ChatWidget = () => {
                             {formatTime(msg.timestamp)}
                           </span>
                         </div>
-                        <p className="text-sm break-words">{msg.text}</p>
+                        <p className="text-sm break-words leading-relaxed">
+                          {msg.text}
+                        </p>
                       </div>
                     </motion.div>
                   ))}
@@ -258,8 +226,8 @@ const ChatWidget = () => {
                 </div>
               </div>
 
-              {/* Input Area */}
-              <div className="border-t border-gray-200 p-4">
+              {/* Input Area - Dark mode adapted */}
+              <div className="border-t border-gray-200 dark:border-gray-800 p-4 bg-white dark:bg-[#121212]">
                 <div className="flex gap-2">
                   <input
                     ref={inputRef}
@@ -268,18 +236,17 @@ const ChatWidget = () => {
                     onChange={(e) => setMessage(e.target.value)}
                     onKeyPress={handleKeyPress}
                     placeholder={t("chat.placeholder")}
-                    className="flex-1 px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#0A66C2] focus:border-transparent text-sm md:text-base"
+                    className="flex-1 px-4 py-3 rounded-xl border border-gray-300 dark:border-gray-700 bg-white dark:bg-[#1e1e1e] text-black dark:text-white focus:outline-none focus:ring-2 focus:ring-[#0A66C2] focus:border-transparent text-sm md:text-base"
                   />
                   <button
                     onClick={sendMessage}
                     disabled={!message.trim()}
                     className="bg-[#0A66C2] text-white p-3 rounded-xl hover:bg-[#0550a0] transition-colors disabled:opacity-50 disabled:cursor-not-allowed shrink-0"
-                    aria-label={t("contact.form.submit") || "Send message"}
                   >
                     <Send size={20} />
                   </button>
                 </div>
-                <p className="text-xs text-gray-500 text-center mt-2 px-2">
+                <p className="text-xs text-gray-500 dark:text-gray-400 text-center mt-2 px-2">
                   {t("chat.availability")}
                 </p>
               </div>
@@ -303,7 +270,6 @@ const ChatWidget = () => {
             whileTap={{ scale: 0.9 }}
             onClick={() => setIsChatOpen(true)}
             className="bg-[#0A66C2] text-white p-4 rounded-full shadow-xl hover:shadow-2xl hover:bg-[#0550a0] transition-all"
-            aria-label="Open chat"
           >
             <MessageCircle size={28} />
           </motion.button>
