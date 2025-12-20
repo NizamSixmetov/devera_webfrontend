@@ -1,5 +1,5 @@
-import HomePage from "./App/page.js";
 import "./App.css";
+import HomePage from "./App/page.js";
 import ChatWidget from "./Components/ChatWidget.js";
 
 function App() {
