@@ -1,30 +1,33 @@
 import { motion } from "motion/react";
-import { Shield, Zap, Target } from "lucide-react";
 import { useTranslation } from "react-i18next";
+import { Shield, Zap, Target } from "lucide-react";
 
 export default function About() {
   const { t } = useTranslation();
 
   const values = [
     {
-      icon: <Shield className="text-[#0A66C2]" size={24} />,
+      icon: <Shield className="text-[#0A66C2] dark:text-blue-400" size={24} />,
       title: t("about.values.reliability.title"),
       desc: t("about.values.reliability.desc"),
     },
     {
-      icon: <Zap className="text-[#7C3AED]" size={24} />,
+      icon: <Zap className="text-[#7C3AED] dark:text-purple-400" size={24} />,
       title: t("about.values.innovation.title"),
       desc: t("about.values.innovation.desc"),
     },
     {
-      icon: <Target className="text-[#0A66C2]" size={24} />,
+      icon: <Target className="text-[#0A66C2] dark:text-blue-400" size={24} />,
       title: t("about.values.expertise.title"),
       desc: t("about.values.expertise.desc"),
     },
   ];
 
   return (
-    <section id="about" className="py-24 bg-white overflow-hidden">
+    <section 
+      id="about" 
+      className="py-24 bg-white dark:bg-[#0a0a0a] overflow-hidden transition-colors duration-300"
+    >
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <motion.div
@@ -33,27 +36,31 @@ export default function About() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="text-sm font-bold text-[#0A66C2] uppercase tracking-[0.2em] mb-4">
+            <h2 className="text-sm font-bold text-[#0A66C2] dark:text-blue-400 uppercase tracking-[0.2em] mb-4">
               {t("about.sectionTitle")}
             </h2>
-            <h3 className="text-4xl md:text-5xl font-bold text-black mb-8 leading-tight">
+            <h3 className="text-4xl md:text-5xl font-bold text-black dark:text-white mb-8 leading-tight">
               {t("about.mainTitle")}
             </h3>
-            <p className="text-lg text-[#6B7280] mb-8 leading-relaxed">
+            <p className="text-lg text-[#6B7280] dark:text-gray-400 mb-8 leading-relaxed">
               {t("about.description1")}
             </p>
-            <p className="text-lg text-[#6B7280] mb-12 leading-relaxed">
+            <p className="text-lg text-[#6B7280] dark:text-gray-400 mb-12 leading-relaxed">
               {t("about.description2")}
             </p>
 
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
               {values.map((value, idx) => (
                 <div key={idx} className="flex flex-col gap-3">
-                  <div className="w-12 h-12 bg-gray-50 rounded-2xl flex items-center justify-center">
+                  <div className="w-12 h-12 bg-gray-50 dark:bg-gray-800/50 rounded-2xl flex items-center justify-center transition-colors">
                     {value.icon}
                   </div>
-                  <h4 className="font-bold text-black">{value.title}</h4>
-                  <p className="text-sm text-[#6B7280]">{value.desc}</p>
+                  <h4 className="font-bold text-black dark:text-white transition-colors">
+                    {value.title}
+                  </h4>
+                  <p className="text-sm text-[#6B7280] dark:text-gray-400 transition-colors">
+                    {value.desc}
+                  </p>
                 </div>
               ))}
             </div>
@@ -66,15 +73,16 @@ export default function About() {
             transition={{ duration: 0.8 }}
             className="relative"
           >
-            <div className="aspect-square rounded-[60px] overflow-hidden shadow-2xl">
+            <div className="aspect-square rounded-[60px] overflow-hidden shadow-2xl dark:shadow-blue-500/5">
               <img
                 src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1200&q=80"
                 alt="DEVERA Team"
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover dark:opacity-80 dark:brightness-90 transition-all"
               />
             </div>
+            
             {/* Stats overlay */}
-            <div className="absolute -bottom-10 -left-10 bg-[#0A66C2] text-white p-8 rounded-[40px] shadow-2xl">
+            <div className="absolute -bottom-10 -left-10 bg-[#0A66C2] dark:bg-blue-600 text-white p-8 rounded-[40px] shadow-2xl dark:shadow-none transition-colors">
               <div className="flex gap-12">
                 <div>
                   <p className="text-4xl font-bold mb-1">150+</p>
