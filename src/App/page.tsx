@@ -9,7 +9,7 @@ import WhyDevera from "../Components/WhyDevera";
 
 export default function HomePage() {
   return (
-    <div className="min-h-screen bg-white font-sans selection:bg-[#0A66C2]/10 selection:text-[#0A66C2]">
+    <div className="min-h-screen bg-white dark:bg-[#0a0a0a] font-sans selection:bg-[#0A66C2]/10 selection:text-[#0A66C2]">
       <Header />
       <main>
         <Hero />
