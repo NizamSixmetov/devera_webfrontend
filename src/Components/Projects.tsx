@@ -1,6 +1,6 @@
 import { motion } from "motion/react";
-import { ExternalLink, ArrowRight } from "lucide-react";
 import { useTranslation } from "react-i18next";
+import { ExternalLink, ArrowRight } from "lucide-react";
 
 export default function Projects() {
   const { t } = useTranslation();
@@ -37,18 +37,21 @@ export default function Projects() {
   ];
 
   return (
-    <section id="projects" className="py-24 bg-gray-50/30">
+    <section
+      id="projects"
+      className="py-24 bg-gray-50/30 dark:bg-[#0f0f0f] transition-colors duration-300"
+    >
       <div className="max-w-7xl mx-auto px-6">
         <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
           <div className="max-w-2xl">
-            <h2 className="text-sm font-bold text-[#0A66C2] uppercase tracking-[0.2em] mb-4">
+            <h2 className="text-sm font-bold text-[#0A66C2] dark:text-blue-400 uppercase tracking-[0.2em] mb-4">
               {t("projects.sectionTitle")}
             </h2>
-            <h3 className="text-4xl md:text-5xl font-bold text-black leading-tight">
+            <h3 className="text-4xl md:text-5xl font-bold text-black dark:text-white leading-tight">
               {t("projects.mainTitle")}
             </h3>
           </div>
-          <button className="group flex items-center gap-2 text-[#0A66C2] font-bold hover:gap-4 transition-all cursor-pointer">
+          <button className="group flex items-center gap-2 text-[#0A66C2] dark:text-blue-400 font-bold hover:gap-4 transition-all cursor-pointer">
             {t("projects.viewAll")} <ArrowRight size={20} />
           </button>
         </div>
@@ -61,30 +64,35 @@ export default function Projects() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: idx * 0.1 }}
-              className="group relative bg-white rounded-[40px] overflow-hidden border border-gray-100 hover:shadow-2xl transition-all"
+              className="group relative bg-white dark:bg-gray-900 rounded-[40px] overflow-hidden border border-gray-100 dark:border-gray-800 hover:shadow-2xl dark:hover:shadow-blue-900/10 transition-all"
             >
               <div className="aspect-[16/10] overflow-hidden">
                 <img
                   src={project.image}
                   alt={project.title}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 dark:opacity-80 dark:brightness-90"
                 />
               </div>
               <div className="p-10">
                 <div className="flex justify-between items-start mb-4">
                   <div>
-                    <p className="text-sm font-bold text-[#7C3AED] uppercase tracking-wider mb-2">
+                    <p className="text-sm font-bold text-[#7C3AED] dark:text-purple-400 uppercase tracking-wider mb-2">
                       {project.category}
                     </p>
-                    <h4 className="text-2xl font-bold text-black">
+                    <h4 className="text-2xl font-bold text-black dark:text-white">
                       {project.title}
                     </h4>
                   </div>
-                  <a href="#" className="w-12 h-12 rounded-full bg-gray-50 flex items-center justify-center text-gray-400 group-hover:bg-[#0A66C2] group-hover:text-white transition-colors cursor-pointer">
+                  <a
+                    href="#"
+                    className="w-12 h-12 rounded-full bg-gray-50 dark:bg-gray-800 flex items-center justify-center text-gray-400 dark:text-gray-500 group-hover:bg-[#0A66C2] dark:group-hover:bg-blue-600 group-hover:text-white transition-colors cursor-pointer"
+                  >
                     <ExternalLink size={20} />
                   </a>
                 </div>
-                <p className="text-[#6B7280] leading-relaxed">{project.desc}</p>
+                <p className="text-[#6B7280] dark:text-gray-400 leading-relaxed">
+                  {project.desc}
+                </p>
               </div>
             </motion.div>
           ))}
