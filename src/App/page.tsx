@@ -3,7 +3,7 @@ import About from "../Components/About";
 import Header from "../Components/Header";
 import Footer from "../Components/Footer";
 import Contact from "../Components/Contact";
-import Projects from "../Components/Projects";
+// import Projects from "../Components/Projects";
 import Services from "../Components/Services";
 import WhyDevera from "../Components/WhyDevera";
 
@@ -16,7 +16,7 @@ export default function HomePage() {
         <About />
         <Services />
         <WhyDevera />
-        <Projects />
+        {/* <Projects /> */}
         <Contact />
       </main>
       <Footer />
