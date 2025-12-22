@@ -90,7 +90,7 @@ export default function Hero() {
             />
 
             {/* Floating Element 1: Growth */}
-            <div className="absolute top-10 right-10 bg-white/90 dark:bg-gray-900/90 backdrop-blur-md p-4 rounded-2xl shadow-xl border border-gray-50 dark:border-gray-800 animate-bounce-slow w-42">
+            {/* <div className="absolute top-10 right-10 bg-white/90 dark:bg-gray-900/90 backdrop-blur-md p-4 rounded-2xl shadow-xl border border-gray-50 dark:border-gray-800 animate-bounce-slow w-42">
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center text-green-600 dark:text-green-400 shrink-0">
                   <ArrowRight size={20} className="-rotate-45" />
@@ -104,10 +104,10 @@ export default function Hero() {
                   </p>
                 </div>
               </div>
-            </div>
+            </div> */}
 
             {/* Floating Element 2: Safety */}
-            <div className="absolute top-31 right-10 bg-white/90 dark:bg-gray-900/90 backdrop-blur-md p-4 rounded-2xl shadow-xl border border-gray-50 dark:border-gray-800 animate-bounce-slow w-42 [animation-delay:0.8s]">
+            {/* <div className="absolute top-31 right-10 bg-white/90 dark:bg-gray-900/90 backdrop-blur-md p-4 rounded-2xl shadow-xl border border-gray-50 dark:border-gray-800 animate-bounce-slow w-42 [animation-delay:0.8s]">
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 bg-blue-100 dark:bg-blue-900/30 rounded-full flex items-center justify-center text-blue-600 dark:text-blue-400 shrink-0">
                   <ArrowRight size={20} className="-rotate-45" />
@@ -121,10 +121,10 @@ export default function Hero() {
                   </p>
                 </div>
               </div>
-            </div>
+            </div> */}
 
             {/* Floating Element 3: Scale */}
-            <div className="absolute top-52 right-10 bg-white/90 dark:bg-gray-900/90 backdrop-blur-md p-4 rounded-2xl shadow-xl border border-gray-50 dark:border-gray-800 animate-bounce-slow w-42 [animation-delay:1.6s]">
+            {/* <div className="absolute top-52 right-10 bg-white/90 dark:bg-gray-900/90 backdrop-blur-md p-4 rounded-2xl shadow-xl border border-gray-50 dark:border-gray-800 animate-bounce-slow w-42 [animation-delay:1.6s]">
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 bg-purple-100 dark:bg-purple-900/30 rounded-full flex items-center justify-center text-purple-600 dark:text-purple-400 shrink-0">
                   <ArrowRight size={20} className="-rotate-45" />
@@ -138,7 +138,7 @@ export default function Hero() {
                   </p>
                 </div>
               </div>
-            </div>
+            </div> */}
           </div>
 
           {/* Decorative Blur Circle */}
