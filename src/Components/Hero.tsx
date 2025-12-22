@@ -147,7 +147,7 @@ export default function Hero() {
       </div>
 
       {/* Technology Scroll */}
-      <div className="mt-20 overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_20%,black_80%,transparent)] w-full">
+      <div className="mt-20 overflow-hidden mask-[linear-gradient(to_right,transparent,black_20%,black_80%,transparent)] w-full">
         <motion.div
           className="flex gap-12 items-center w-max"
           animate={{
