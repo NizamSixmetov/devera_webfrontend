@@ -6,14 +6,22 @@ import { useMemo } from "react";
 export default function Hero() {
   const { t } = useTranslation();
   const technologies = useMemo(() => [
-  { name: "React", src: "https://cdn.worldvectorlogo.com/logos/react-2.svg" },
-  { name: "Next.js", src: "https://cdn.worldvectorlogo.com/logos/next-js.svg" },
-  { name: "Node.js", src: "https://cdn.worldvectorlogo.com/logos/nodejs-icon.svg" },
-  { name: "TypeScript", src: "https://cdn.worldvectorlogo.com/logos/typescript.svg" },
-  { name: "Tailwind", src: "https://cdn.worldvectorlogo.com/logos/tailwind-css-2.svg" },
-  { name: "Framer Motion", src: "https://cdn.worldvectorlogo.com/logos/framer-motion.svg" },
-  { name: "PostgreSQL", src: "https://cdn.worldvectorlogo.com/logos/postgresql.svg" },
-  { name: "Docker", src: "https://cdn.worldvectorlogo.com/logos/docker-4.svg" },
+  // { name: "React", src: "https://cdn.worldvectorlogo.com/logos/react-2.svg" },
+  // { name: "Next.js", src: "https://cdn.worldvectorlogo.com/logos/next-js.svg" },
+  // { name: "Node.js", src: "https://cdn.worldvectorlogo.com/logos/nodejs-icon.svg" },
+  // { name: "TypeScript", src: "https://cdn.worldvectorlogo.com/logos/typescript.svg" },
+  // { name: "Tailwind", src: "https://cdn.worldvectorlogo.com/logos/tailwind-css-2.svg" },
+  // { name: "Framer Motion", src: "https://cdn.worldvectorlogo.com/logos/framer-motion.svg" },
+  // { name: "PostgreSQL", src: "https://cdn.worldvectorlogo.com/logos/postgresql.svg" },
+  // { name: "Docker", src: "https://cdn.worldvectorlogo.com/logos/docker-4.svg" },
+  { name: "React", src: "/swiper-images/react-2.svg" },
+  { name: "Next.js", src: "/swiper-images/next-js.svg" },
+  { name: "Node.js", src: "/swiper-images/nodejs-icon.svg" },
+  { name: "TypeScript", src: "/swiper-images/typescript.svg" },
+  { name: "Tailwind", src: "/swiper-images/tailwind-css-2.svg" },
+  { name: "Framer Motion", src: "/swiper-images/framer-motion.svg" },
+  { name: "PostgreSQL", src: "/swiper-images/postgresql.svg" },
+  { name: "Docker", src: "/swiper-images/docker-4.svg" },
 ], []);
 
   return (
@@ -84,7 +92,8 @@ export default function Hero() {
         >
           <div className="relative z-10 bg-white dark:bg-gray-900 rounded-[40px] border border-gray-100 dark:border-gray-800 shadow-2xl p-4 overflow-hidden mt-10">
             <img
-              src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80"
+              // src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80"
+              src="/images/hero-photo.avif"
               alt="DEVERA Dashboard"
               className="rounded-4xl w-full h-auto object-cover opacity-90 dark:opacity-80"
             />
