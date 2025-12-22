@@ -6,8 +6,7 @@ export function useLenis() {
 
   useEffect(() => {
     const lenis = new Lenis({
-      smooth: true,
-      lerp: 0.1, // плавность (0.05–0.15)
+      lerp: 0.1,
       wheelMultiplier: 1,
       touchMultiplier: 1.5,
     });
