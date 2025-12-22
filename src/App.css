@@ -9,6 +9,7 @@
 @layer base {
   html {
     color-scheme: light;
+    height: 100%;
   }
 
   html.dark {
@@ -18,10 +19,12 @@
   body {
     @apply bg-white text-black transition-colors duration-300;
     @apply dark:bg-[#0a0a0a] dark:text-white;
+    height: 100%;
+    overflow: hidden;
   }
 }
 
-/* Стили скроллбара */
+/* Scroll bar styles */
 ::-webkit-scrollbar {
   width: 10px;
 }
@@ -36,4 +39,8 @@
 
 ::-webkit-scrollbar-thumb:hover {
   @apply bg-gray-300 dark:bg-gray-700;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
 }
