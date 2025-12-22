@@ -1,6 +1,6 @@
 import { motion } from "motion/react";
 import { useTranslation } from "react-i18next";
-import { ArrowRight, ChevronRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { useMemo } from "react";
 
 export default function Hero() {
@@ -69,7 +69,7 @@ export default function Hero() {
               {t("hero.ctaPrimary")}
               <ArrowRight size={20} />
             </button>
-            <button
+            {/* <button
               onClick={() =>
                 document
                   .getElementById("projects")
@@ -79,7 +79,7 @@ export default function Hero() {
             >
               {t("hero.ctaSecondary")}
               <ChevronRight size={20} className="text-[#0A66C2]" />
-            </button>
+            </button> */}
           </div>
         </motion.div>
 
