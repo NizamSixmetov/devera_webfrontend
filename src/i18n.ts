@@ -26,38 +26,41 @@ i18n.use(initReactI18next).init({
           badge: "Next-Gen IT Solutions",
           title1: "DEVERA",
           title2: "Digital Future.",
-          description: "Building scalable digital solutions that empower businesses to thrive in the modern era. We specialize in high-end engineering and premium design.",
+          description:
+            "Building scalable digital solutions that empower businesses to thrive in the modern era. We specialize in high-end engineering and premium design.",
           ctaPrimary: "Get in Touch",
           ctaSecondary: "View Projects",
           stats: {
             growth: "Growth",
             safety: "Safety",
             scale: "Scale",
-          }
+          },
         },
         about: {
           sectionTitle: "About DEVERA",
           mainTitle: "Engineering solutions for the digital age",
-          description1: "DEVERA is a technology-first IT company specializing in high-performance software development. We don't just write code; We provide simple, fast and effective business solutions for you.",
-          description2: "Our mission is to bridge the gap between complex business needs and elegant technical solutions, ensuring our clients stay competitive in an ever-evolving landscape.",
+          description1:
+            "DEVERA is a technology-first IT company specializing in high-performance software development. We don't just write code; We provide simple, fast and effective business solutions for you.",
+          description2:
+            "Our mission is to bridge the gap between complex business needs and elegant technical solutions, ensuring our clients stay competitive in an ever-evolving landscape.",
           values: {
             reliability: {
               title: "Reliability",
-              desc: "We build robust systems that stand the test of time and scale with your growth."
+              desc: "We build robust systems that stand the test of time and scale with your growth.",
             },
             innovation: {
               title: "Innovation",
-              desc: "Staying ahead of the curve with the latest technologies and engineering practices."
+              desc: "Staying ahead of the curve with the latest technologies and engineering practices.",
             },
             expertise: {
               title: "Expertise",
-              desc: "A team of senior engineers dedicated to solving complex business challenges."
-            }
+              desc: "A team of senior engineers dedicated to solving complex business challenges.",
+            },
           },
           stats: {
             projects: "Projects",
-            years: "Years"
-          }
+            years: "Years",
+          },
         },
         services: {
           sectionTitle: "Our Services",
@@ -84,12 +87,13 @@ i18n.use(initReactI18next).init({
               title: "IT Consulting",
               desc: "We support you in choosing the right technology for your business.",
             },
-          }
+          },
         },
         whyDevera: {
           sectionTitle: "Why Choose Us",
           mainTitle: "The DEVERA Advantage: Where Quality Meets Innovation",
-          description: "We don't just build software; we build partnerships. Our approach is rooted in deep technical expertise and a commitment to your business success.",
+          description:
+            "We don't just build software; we build partnerships. Our approach is rooted in deep technical expertise and a commitment to your business success.",
           cta: "Learn More About Us",
           benefits: {
             seniorTeam: {
@@ -108,7 +112,7 @@ i18n.use(initReactI18next).init({
               title: "Transparent Process",
               desc: "Real-time updates and clear communication at every stage.",
             },
-          }
+          },
         },
         projects: {
           sectionTitle: "Our Portfolio",
@@ -135,41 +139,42 @@ i18n.use(initReactI18next).init({
               category: "SaaS",
               desc: "Enterprise-grade cloud synchronization and collaboration tool.",
             },
-          }
+          },
         },
         contact: {
           sectionTitle: "Contact Us",
           mainTitle: "Let's Build Something Extraordinary Together",
-          description: "Have a project in mind? We're always open to discussing new projects, creative ideas, or opportunities to be part of your visions.",
+          description:
+            "Have a project in mind? We're always open to discussing new projects, creative ideas, or opportunities to be part of your visions.",
           contactInfo: {
             email: {
               label: "Email us at",
-              value: "hello@devera.tech"
+              value: "info@devera.az",
             },
             phone: {
               label: "Call us at",
-              value: "+1 (555) 000-DEVERA"
+              value: "+994 (77) 800-27-77",
             },
             address: {
               label: "Visit our office",
-              value: "Tech Plaza, Silicon Valley, CA"
-            }
+              value: "Baku City, Azerbaijan",
+            },
           },
           form: {
             name: {
               label: "Full Name",
               placeholder: "John Doe",
               error: {
-                required: "Name is required"
-              }
+                required: "Name is required",
+              },
             },
             email: {
               label: "Email Address",
               placeholder: "john@example.com",
               error: {
                 required: "Email is required",
-                invalid: "Invalid email"
-              }
+                invalid: "Invalid email",
+              },
             },
             projectType: {
               label: "Project Type",
@@ -178,31 +183,32 @@ i18n.use(initReactI18next).init({
                 mobile: "Mobile Application",
                 design: "UI/UX Design",
                 cloud: "Cloud Solutions",
-                other: "Other"
-              }
+                other: "Other",
+              },
             },
             message: {
               label: "Your Message",
               placeholder: "Tell us about your project...",
               error: {
-                required: "Message is required"
-              }
+                required: "Message is required",
+              },
             },
             submit: "Send Message",
             submitting: "Sending...",
-            successMessage: "Message sent successfully! We'll get back to you soon."
+            successMessage:
+              "Message sent successfully! We'll get back to you soon.",
           },
           social: {
             linkedin: "LinkedIn",
             instagram: "Instagram",
-            tiktok: "TikTok"
-          }
+            tiktok: "TikTok",
+          },
         },
         footer: {
           privacy: "Privacy Policy",
           terms: "Terms of Service",
           cookies: "Cookie Policy",
-          copyright: "© {{year}} DEVERA IT Solutions. All rights reserved."
+          copyright: "© {{year}} DEVERA IT Solutions. All rights reserved.",
         },
         chat: {
           title: "DEVERA Support",
@@ -213,16 +219,16 @@ i18n.use(initReactI18next).init({
           availability: "Our team is available 24/7 for urgent inquiries",
           initialMessages: [
             "Hello! I'm Devera Support Bot. How can I help you today?",
-            "Welcome to DEVERA IT Solutions! We're here to assist you with any questions about our services, projects, or partnerships."
+            "Welcome to DEVERA IT Solutions! We're here to assist you with any questions about our services, projects, or partnerships.",
           ],
           responses: [
             "Thank you for your message! Our team will get back to you shortly.",
             "I understand. Let me connect you with a specialist who can help with that.",
             "Great question! Our experts typically respond within 1-2 business hours.",
             "For detailed project inquiries, I recommend filling out our contact form on the website.",
-            "I've noted your question. Would you like to schedule a consultation call?"
-          ]
-        }
+            "I've noted your question. Would you like to schedule a consultation call?",
+          ],
+        },
       },
     },
     ru: {
@@ -239,38 +245,41 @@ i18n.use(initReactI18next).init({
           badge: "ИТ-решения нового поколения",
           title1: "DEVERA",
           title2: "Цифровое будущее.",
-          description: "Создаем цифровые решения, помогаем бизнесу процветать в современную эпоху. Специализируемся на высококачественной инженерии и премиальном дизайне.",
+          description:
+            "Создаем цифровые решения, помогаем бизнесу процветать в современную эпоху. Специализируемся на высококачественной инженерии и премиальном дизайне.",
           ctaPrimary: "Связаться",
           ctaSecondary: "Посмотреть проекты",
           stats: {
             growth: "Рост",
             safety: "Безопасность",
             scale: "Масштаб",
-          }
+          },
         },
         about: {
           sectionTitle: "О DEVERA",
           mainTitle: "Инженерные решения для цифровой эпохи",
-          description1: "DEVERA — это IT-компания, ориентированная на технологии и специализирующаяся на разработке высокопроизводительного программного обеспечения. Мы не просто пишем код; Мы предлагаем простые, быстрые и эффективные бизнес-решения для вас.",
-          description2: "Наша миссия — преодолеть разрыв между сложными бизнес-задачами и элегантными техническими решениями, гарантируя, что наши клиенты остаются конкурентоспособными в постоянно меняющемся ландшафте.",
+          description1:
+            "DEVERA — это IT-компания, ориентированная на технологии и специализирующаяся на разработке высокопроизводительного программного обеспечения. Мы не просто пишем код; Мы предлагаем простые, быстрые и эффективные бизнес-решения для вас.",
+          description2:
+            "Наша миссия — преодолеть разрыв между сложными бизнес-задачами и элегантными техническими решениями, гарантируя, что наши клиенты остаются конкурентоспособными в постоянно меняющемся ландшафте.",
           values: {
             reliability: {
               title: "Надежность",
-              desc: "Мы создаем надежные системы, которые выдерживают испытание временем и масштабируются вместе с вашим ростом."
+              desc: "Мы создаем надежные системы, которые выдерживают испытание временем и масштабируются вместе с вашим ростом.",
             },
             innovation: {
               title: "Инновации",
-              desc: "Остаемся на шаг впереди с использованием новейших технологий и инженерных практик."
+              desc: "Остаемся на шаг впереди с использованием новейших технологий и инженерных практик.",
             },
             expertise: {
               title: "Экспертиза",
-              desc: "Команда старших инженеров, посвятивших себя решению сложных бизнес-задач."
-            }
+              desc: "Команда старших инженеров, посвятивших себя решению сложных бизнес-задач.",
+            },
           },
           stats: {
             projects: "Проектов",
-            years: "Лет"
-          }
+            years: "Лет",
+          },
         },
         services: {
           sectionTitle: "Наши услуги",
@@ -297,12 +306,13 @@ i18n.use(initReactI18next).init({
               title: "IT консалтинг",
               desc: "Мы поддерживаем вас в выборе правильных технологий для вашего бизнеса.",
             },
-          }
+          },
         },
         whyDevera: {
           sectionTitle: "Почему выбирают нас",
           mainTitle: "Преимущество DEVERA: где качество встречает инновации",
-          description: "Мы не просто создаем программное обеспечение; мы строим партнерства. Наш подход основан на глубоких технических знаниях и приверженности вашему бизнес-успеху.",
+          description:
+            "Мы не просто создаем программное обеспечение; мы строим партнерства. Наш подход основан на глубоких технических знаниях и приверженности вашему бизнес-успеху.",
           cta: "Узнать больше о нас",
           benefits: {
             seniorTeam: {
@@ -321,7 +331,7 @@ i18n.use(initReactI18next).init({
               title: "Прозрачный процесс",
               desc: "Обновления в реальном времени и четкая коммуникация на каждом этапе.",
             },
-          }
+          },
         },
         projects: {
           sectionTitle: "Наше портфолио",
@@ -348,41 +358,42 @@ i18n.use(initReactI18next).init({
               category: "SaaS",
               desc: "Корпоративный инструмент облачной синхронизации и совместной работы.",
             },
-          }
+          },
         },
         contact: {
           sectionTitle: "Контакты",
           mainTitle: "Давайте вместе Создадим Что-То Экстраординарное",
-          description: "Есть идея для проекта? Мы всегда готовы для новых проектов, творческих идей или возможностей стать частью ваших видений.",
+          description:
+            "Есть идея для проекта? Мы всегда готовы для новых проектов, творческих идей или возможностей стать частью ваших видений.",
           contactInfo: {
             email: {
               label: "Напишите нам на",
-              value: "hello@devera.tech"
+              value: "info@devera.az",
             },
             phone: {
               label: "Позвоните нам по номеру",
-              value: "+1 (555) 000-DEVERA"
+              value: "+994 (77) 800-27-77",
             },
             address: {
               label: "Посетите наш офис",
-              value: "Тех Плаза, Кремниевая долина, Калифорния"
-            }
+              value: "Город Баку, Азербайджан",
+            },
           },
           form: {
             name: {
               label: "Полное имя",
               placeholder: "Иван Иванов",
               error: {
-                required: "Имя обязательно"
-              }
+                required: "Имя обязательно",
+              },
             },
             email: {
               label: "Электронная почта",
               placeholder: "ivan@example.com",
               error: {
                 required: "Электронная почта обязательна",
-                invalid: "Некорректный email"
-              }
+                invalid: "Некорректный email",
+              },
             },
             projectType: {
               label: "Тип проекта",
@@ -391,31 +402,32 @@ i18n.use(initReactI18next).init({
                 mobile: "Мобильное приложение",
                 design: "UI/UX дизайн",
                 cloud: "Облачные решения",
-                other: "Другое"
-              }
+                other: "Другое",
+              },
             },
             message: {
               label: "Ваше сообщение",
               placeholder: "Расскажите нам о вашем проекте...",
               error: {
-                required: "Сообщение обязательно"
-              }
+                required: "Сообщение обязательно",
+              },
             },
             submit: "Отправить сообщение",
             submitting: "Отправка...",
-            successMessage: "Сообщение успешно отправлено! Мы свяжемся с вами в ближайшее время."
+            successMessage:
+              "Сообщение успешно отправлено! Мы свяжемся с вами в ближайшее время.",
           },
           social: {
             linkedin: "LinkedIn",
             instagram: "Instagram",
-            tiktok: "TikTok"
-          }
+            tiktok: "TikTok",
+          },
         },
         footer: {
           privacy: "Политика конфиденциальности",
           terms: "Условия использования",
           cookies: "Политика использования файлов cookie",
-          copyright: "© {{year}} DEVERA IT Solutions. Все права защищены."
+          copyright: "© {{year}} DEVERA IT Solutions. Все права защищены.",
         },
         chat: {
           title: "Поддержка DEVERA",
@@ -426,16 +438,16 @@ i18n.use(initReactI18next).init({
           availability: "Наша команда доступна 24/7 для срочных запросов",
           initialMessages: [
             "Привет! Я бот поддержки Devera. Чем могу помочь вам сегодня?",
-            "Добро пожаловать в DEVERA IT Solutions! Мы здесь, чтобы помочь вам с любыми вопросами о наших услугах, проектах или сотрудничестве."
+            "Добро пожаловать в DEVERA IT Solutions! Мы здесь, чтобы помочь вам с любыми вопросами о наших услугах, проектах или сотрудничестве.",
           ],
           responses: [
             "Спасибо за ваше сообщение! Наша команда свяжется с вами в ближайшее время.",
             "Понял вас. Позвольте мне связать вас со специалистом, который может помочь с этим.",
             "Отличный вопрос! Наши эксперты обычно отвечают в течение 1-2 рабочих дней.",
             "Для детальных запросов по проектам рекомендую заполнить нашу контактную форму на сайте.",
-            "Я отметил ваш вопрос. Хотите запланировать консультационный звонок?"
-          ]
-        }
+            "Я отметил ваш вопрос. Хотите запланировать консультационный звонок?",
+          ],
+        },
       },
     },
     az: {
@@ -452,38 +464,41 @@ i18n.use(initReactI18next).init({
           badge: "Növbəti nəsil IT Həlləri",
           title1: "DEVERA",
           title2: "Rəqəmsal Gələcək.",
-          description: "Müasir dövrdə biznesin inkişaf etməsinə kömək edən miqyaslı rəqəmsal həllər qururuq. Biz yüksək keyfiyyətli mühəndislik və premium dizayn üzrə ixtisaslaşmışıq.",
+          description:
+            "Müasir dövrdə biznesin inkişaf etməsinə kömək edən miqyaslı rəqəmsal həllər qururuq. Biz yüksək keyfiyyətli mühəndislik və premium dizayn üzrə ixtisaslaşmışıq.",
           ctaPrimary: "Əlaqə saxla",
           ctaSecondary: "Layihələrə bax",
           stats: {
             growth: "Artım",
             safety: "Təhlükəsizlik",
             scale: "Miqyas",
-          }
+          },
         },
         about: {
           sectionTitle: "DEVERA Haqqında",
           mainTitle: "Rəqəmsal Dövr üçün Mühəndislik Həlləri",
-          description1: "DEVERA yüksək performanslı proqram təminatı hazırlanması üzrə ixtisaslaşmış, texnologiyalara üstünlük verən bir IT şirkətidir. Biz sadəcə kod yazmırıq; Sizin üçün sadə, sürətli və effektiv biznes həlləri təqdim edirik.",
-          description2: "Bizim missiyamız mürəkkəb biznes ehtiyacları ilə zərif texniki həllər arasındakı boşluğu aradan qaldırmaq və müştərilərimizin daim dəyişən mühitdə rəqabət qabiliyyətini qorumağını təmin etməkdir.",
+          description1:
+            "DEVERA yüksək performanslı proqram təminatı hazırlanması üzrə ixtisaslaşmış, texnologiyalara üstünlük verən bir IT şirkətidir. Biz sadəcə kod yazmırıq; Sizin üçün sadə, sürətli və effektiv biznes həlləri təqdim edirik.",
+          description2:
+            "Bizim missiyamız mürəkkəb biznes ehtiyacları ilə zərif texniki həllər arasındakı boşluğu aradan qaldırmaq və müştərilərimizin daim dəyişən mühitdə rəqabət qabiliyyətini qorumağını təmin etməkdir.",
           values: {
             reliability: {
               title: "Etibarlılıq",
-              desc: "Biz sizin böyümənizlə birlikdə miqyaslı olan və zamanın sınağından çıxan möhkəm sistemlər qururuq."
+              desc: "Biz sizin böyümənizlə birlikdə miqyaslı olan və zamanın sınağından çıxan möhkəm sistemlər qururuq.",
             },
             innovation: {
               title: "Yenilik",
-              desc: "Ən son texnologiyalar və mühəndislik təcrübələri ilə dəyişikliklərdən bir addım öndə olmaq."
+              desc: "Ən son texnologiyalar və mühəndislik təcrübələri ilə dəyişikliklərdən bir addım öndə olmaq.",
             },
             expertise: {
               title: "Ekspertizə",
-              desc: "Mürəkkəb biznes problemlərini həll etməyə həsr olunmuş baş mühəndislərdən ibarət komanda."
-            }
+              desc: "Mürəkkəb biznes problemlərini həll etməyə həsr olunmuş baş mühəndislərdən ibarət komanda.",
+            },
           },
           stats: {
             projects: "Layihə",
-            years: "İl"
-          }
+            years: "İl",
+          },
         },
         services: {
           sectionTitle: "Xidmətlərimiz",
@@ -510,12 +525,14 @@ i18n.use(initReactI18next).init({
               title: "IT Məsləhətçilik",
               desc: "Biznesiniz üçün düzgün texnologiya seçimində sizə dəstək oluruq.",
             },
-          }
+          },
         },
         whyDevera: {
           sectionTitle: "Niyə biz?",
-          mainTitle: "DEVERA üstünlüyü: keyfiyyətin innovasiya ilə görüşdüyü yer",
-          description: "Biz sadəcə proqram təminatı yaratmırıq; biz tərəfdaşlıq qururuq. Bizim yanaşmamız dərin texniki bilik və biznes uğurunuza sadiqliyə əsaslanır.",
+          mainTitle:
+            "DEVERA üstünlüyü: keyfiyyətin innovasiya ilə görüşdüyü yer",
+          description:
+            "Biz sadəcə proqram təminatı yaratmırıq; biz tərəfdaşlıq qururuq. Bizim yanaşmamız dərin texniki bilik və biznes uğurunuza sadiqliyə əsaslanır.",
           cta: "Haqqımızda daha çox öyrən",
           benefits: {
             seniorTeam: {
@@ -534,7 +551,7 @@ i18n.use(initReactI18next).init({
               title: "Şəffaf proses",
               desc: "Hər mərhələdə real vaxt yeniləmələri və aydın kommunikasiya.",
             },
-          }
+          },
         },
         projects: {
           sectionTitle: "Portfoliolarımız",
@@ -561,41 +578,42 @@ i18n.use(initReactI18next).init({
               category: "SaaS",
               desc: "Korporativ səviyyəli bulud sinxronizasiyası və əməkdaşlıq aləti.",
             },
-          }
+          },
         },
         contact: {
           sectionTitle: "Əlaqə",
           mainTitle: "Gəlin birlikdə qeyri-adi bir şey yaradaq",
-          description: "Ağlınızda bir layihə varmı? Biz həmişə yeni layihələri, yaradıcı fikirləri və ya vizyonlarınızın bir hissəsi olmaq imkanlarını müzakirə etməyə açığıq.",
+          description:
+            "Ağlınızda bir layihə varmı? Biz həmişə yeni layihələri, yaradıcı fikirləri və ya vizyonlarınızın bir hissəsi olmaq imkanlarını müzakirə etməyə açığıq.",
           contactInfo: {
             email: {
               label: "Bizə e-poçt göndərin",
-              value: "hello@devera.tech"
+              value: "info@devera.az",
             },
             phone: {
               label: "Bizə zəng edin",
-              value: "+1 (555) 000-DEVERA"
+              value: "+994 (77) 800-27-77",
             },
             address: {
               label: "Ofisimizi ziyarət edin",
-              value: "Tex Plaza, Silikon Vadisi, Kaliforniya"
-            }
+              value: "Bakı şəhəri, Azərbaycan",
+            },
           },
           form: {
             name: {
               label: "Tam ad",
               placeholder: "Əli Əliyev",
               error: {
-                required: "Ad tələb olunur"
-              }
+                required: "Ad tələb olunur",
+              },
             },
             email: {
               label: "E-poçt ünvanı",
               placeholder: "eli@example.com",
               error: {
                 required: "E-poçt tələb olunur",
-                invalid: "Yanlış e-poçt ünvanı"
-              }
+                invalid: "Yanlış e-poçt ünvanı",
+              },
             },
             projectType: {
               label: "Layihə növü",
@@ -604,31 +622,32 @@ i18n.use(initReactI18next).init({
                 mobile: "Mobil tətbiq",
                 design: "UI/UX Dizayn",
                 cloud: "Bulud həlləri",
-                other: "Digər"
-              }
+                other: "Digər",
+              },
             },
             message: {
               label: "Mesajınız",
               placeholder: "Layihəniz haqqında bizə məlumat verin...",
               error: {
-                required: "Mesaj tələb olunur"
-              }
+                required: "Mesaj tələb olunur",
+              },
             },
             submit: "Mesaj göndər",
             submitting: "Göndərilir...",
-            successMessage: "Mesaj uğurla göndərildi! Biz sizinlə əlaqə saxlayacağıq."
+            successMessage:
+              "Mesaj uğurla göndərildi! Biz sizinlə əlaqə saxlayacağıq.",
           },
           social: {
             linkedin: "LinkedIn",
             instagram: "Instagram",
-            tiktok: "TikTok"
-          }
+            tiktok: "TikTok",
+          },
         },
         footer: {
           privacy: "Məxfilik Siyasəti",
           terms: "Xidmət Şərtləri",
           cookies: "Cookie Siyasəti",
-          copyright: "© {{year}} DEVERA IT Solutions. Bütün hüquqlar qorunur."
+          copyright: "© {{year}} DEVERA IT Solutions. Bütün hüquqlar qorunur.",
         },
         chat: {
           title: "DEVERA Dəstək",
@@ -639,16 +658,16 @@ i18n.use(initReactI18next).init({
           availability: "Komandamız təcili sorğular üçün 24/7 mövcuddur",
           initialMessages: [
             "Salam! Mən Devera Dəstək Botuyam. Bu gün sizə necə kömək edə bilərəm?",
-            "DEVERA IT Solutions-a xoş gəlmisiniz! Xidmətlərimiz, layihələrimiz və ya əməkdaşlıqlarımızla bağlı istənilən suallarınızda sizə kömək etmək üçün buradayıq."
+            "DEVERA IT Solutions-a xoş gəlmisiniz! Xidmətlərimiz, layihələrimiz və ya əməkdaşlıqlarımızla bağlı istənilən suallarınızda sizə kömək etmək üçün buradayıq.",
           ],
           responses: [
             "Mesajınız üçün təşəkkürlər! Komandamız sizinlə ən qısa zamanda əlaqə saxlayacaq.",
             "Başa düşürəm. Sizi bu mövzuda kömək edə biləcək mütəxəssislə əlaqələndirim.",
             "Əla sual! Mütəxəssislərimiz adətən 1-2 iş günü ərzində cavab verirlər.",
             "Layihə ilə bağlı ətraflı sorğular üçün veb saytımızdakı əlaqə formasını doldurmağı məsləhət görürəm.",
-            "Sualınızı qeyd etdim. Konsultasiya zəngi planlaşdırmaq istərdinizmi?"
-          ]
-        }
+            "Sualınızı qeyd etdim. Konsultasiya zəngi planlaşdırmaq istərdinizmi?",
+          ],
+        },
       },
     },
   },

@@ -1,3 +1,4 @@
+import { useMemo } from "react";
 import { motion } from "motion/react";
 import { toast, Toaster } from "sonner";
 import { useTranslation } from "react-i18next";
@@ -26,6 +27,30 @@ export default function Contact() {
     reset();
   };
 
+  const contactDetails = useMemo(() => [
+    {
+      icon: <Mail size={24} />,
+      label: t("contact.contactInfo.email.label"),
+      value: t("contact.contactInfo.email.value"),
+      href: `mailto:${t("contact.contactInfo.email.value")}`,
+      color: "bg-blue-50 dark:bg-blue-900/20 text-[#0A66C2] dark:text-blue-400",
+    },
+    {
+      icon: <Phone size={24} />,
+      label: t("contact.contactInfo.phone.label"),
+      value: t("contact.contactInfo.phone.value"),
+      href: `tel:${t("contact.contactInfo.phone.value").replace(/\s+/g, '')}`,
+      color: "bg-purple-50 dark:bg-purple-900/20 text-[#7C3AED] dark:text-purple-400",
+    },
+    {
+      icon: <MapPin size={24} />,
+      label: t("contact.contactInfo.address.label"),
+      value: t("contact.contactInfo.address.value"),
+      href: `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(t("contact.contactInfo.address.value"))}`,
+      color: "bg-blue-50 dark:bg-blue-900/20 text-[#0A66C2] dark:text-blue-400",
+    },
+  ], [t]);
+
   return (
     <section
       id="contact"
@@ -47,29 +72,7 @@ export default function Contact() {
             </p>
 
             <div className="space-y-8 mb-12">
-              {[
-                {
-                  icon: <Mail size={24} />,
-                  label: t("contact.contactInfo.email.label"),
-                  value: t("contact.contactInfo.email.value"),
-                  color:
-                    "bg-blue-50 dark:bg-blue-900/20 text-[#0A66C2] dark:text-blue-400",
-                },
-                {
-                  icon: <Phone size={24} />,
-                  label: t("contact.contactInfo.phone.label"),
-                  value: t("contact.contactInfo.phone.value"),
-                  color:
-                    "bg-purple-50 dark:bg-purple-900/20 text-[#7C3AED] dark:text-purple-400",
-                },
-                {
-                  icon: <MapPin size={24} />,
-                  label: t("contact.contactInfo.address.label"),
-                  value: t("contact.contactInfo.address.value"),
-                  color:
-                    "bg-blue-50 dark:bg-blue-900/20 text-[#0A66C2] dark:text-blue-400",
-                },
-              ].map((info, idx) => (
+              {contactDetails.map((info, idx) => (
                 <div key={idx} className="flex items-center gap-6">
                   <div
                     className={`w-14 h-14 rounded-2xl flex items-center justify-center ${info.color}`}
@@ -80,9 +83,20 @@ export default function Contact() {
                     <p className="text-sm text-[#6B7280] dark:text-gray-500 font-medium">
                       {info.label}
                     </p>
-                    <p className="text-xl font-bold text-black dark:text-white">
+                    <a
+                      href={info.href}
+                      target={
+                        info.href.startsWith("http") ? "_blank" : undefined
+                      }
+                      rel={
+                        info.href.startsWith("http")
+                          ? "noopener noreferrer"
+                          : undefined
+                      }
+                      className="text-xl font-bold text-black dark:text-white hover:text-[#0A66C2] dark:hover:text-blue-400 transition-colors"
+                    >
                       {info.value}
-                    </p>
+                    </a>
                   </div>
                 </div>
               ))}
@@ -127,7 +141,7 @@ export default function Contact() {
           >
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                <div className="space-y-2">
+                <div className="space-y-2 flex flex-col gap-1">
                   <label className="text-sm font-bold text-black dark:text-gray-300 ml-1">
                     {t("contact.form.name.label")}
                   </label>
@@ -143,7 +157,7 @@ export default function Contact() {
                     } text-black dark:text-white focus:outline-none focus:ring-2 focus:ring-[#0A66C2] transition-all`}
                   />
                 </div>
-                <div className="space-y-2">
+                <div className="space-y-2 flex flex-col gap-1">
                   <label className="text-sm font-bold text-black dark:text-gray-300 ml-1">
                     {t("contact.form.email.label")}
                   </label>
@@ -165,7 +179,7 @@ export default function Contact() {
                 </div>
               </div>
 
-              <div className="space-y-2">
+              <div className="space-y-2 flex flex-col gap-1">
                 <label className="text-sm font-bold text-black dark:text-gray-300 ml-1">
                   {t("contact.form.projectType.label")}
                 </label>
@@ -185,7 +199,7 @@ export default function Contact() {
                 </select>
               </div>
 
-              <div className="space-y-2">
+              <div className="space-y-2 flex flex-col gap-1">
                 <label className="text-sm font-bold text-black dark:text-gray-300 ml-1">
                   {t("contact.form.message.label")}
                 </label>
