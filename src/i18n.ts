@@ -37,8 +37,8 @@ i18n.use(initReactI18next).init({
         },
         about: {
           sectionTitle: "About DEVERA",
-          mainTitle: "Engineering Excellence for the Digital Era",
-          description1: "DEVERA is a technology-first IT company specializing in high-performance software development. We don't just write code; we build digital foundations for the world's most ambitious companies.",
+          mainTitle: "Engineering solutions for the digital age",
+          description1: "DEVERA is a technology-first IT company specializing in high-performance software development. We don't just write code; We provide simple, fast and effective business solutions for you.",
           description2: "Our mission is to bridge the gap between complex business needs and elegant technical solutions, ensuring our clients stay competitive in an ever-evolving landscape.",
           values: {
             reliability: {
@@ -66,7 +66,7 @@ i18n.use(initReactI18next).init({
           items: {
             web: {
               title: "Web Development",
-              desc: "High-performance web applications built with React, Next.js, and modern stacks.",
+              desc: "High-performance web applications built with modern technologies.",
             },
             mobile: {
               title: "Mobile Applications",
@@ -74,15 +74,15 @@ i18n.use(initReactI18next).init({
             },
             design: {
               title: "UI/UX Design",
-              desc: "User-centric design that combines aesthetics with seamless functionality.",
+              desc: "Nice looking and comfortable to use design.",
             },
             cloud: {
-              title: "Cloud & Backend",
-              desc: "Scalable cloud infrastructure and robust backend systems for complex data.",
+              title: "ERP and CRM systems",
+              desc: "We simplify business management by collecting financial, sales and customer information in a single system.",
             },
             consulting: {
               title: "IT Consulting",
-              desc: "Strategic technology advice to help you navigate the digital landscape.",
+              desc: "We support you in choosing the right technology for your business.",
             },
           }
         },
@@ -93,8 +93,8 @@ i18n.use(initReactI18next).init({
           cta: "Learn More About Us",
           benefits: {
             seniorTeam: {
-              title: "Senior-Only Team",
-              desc: "Your project is handled by experienced engineers, not juniors.",
+              title: "Qualified engineers",
+              desc: "Your project is handled only by experienced engineers.",
             },
             globalStandards: {
               title: "Global Standards",
@@ -102,7 +102,7 @@ i18n.use(initReactI18next).init({
             },
             qualityFirst: {
               title: "Quality First",
-              desc: "Rigorous testing and code reviews are part of our DNA.",
+              desc: "Rigorous tests and code analysis are part of our DNA.",
             },
             transparentProcess: {
               title: "Transparent Process",
@@ -140,7 +140,7 @@ i18n.use(initReactI18next).init({
         contact: {
           sectionTitle: "Contact Us",
           mainTitle: "Let's Build Something Extraordinary Together",
-          description: "Have a project in mind? Or just want to say hello? We're always open to discussing new projects, creative ideas, or opportunities to be part of your visions.",
+          description: "Have a project in mind? We're always open to discussing new projects, creative ideas, or opportunities to be part of your visions.",
           contactInfo: {
             email: {
               label: "Email us at",
@@ -250,8 +250,8 @@ i18n.use(initReactI18next).init({
         },
         about: {
           sectionTitle: "О DEVERA",
-          mainTitle: "Инженерное превосходство для цифровой эпохи",
-          description1: "DEVERA — это IT-компания, ориентированная на технологии и специализирующаяся на разработке высокопроизводительного программного обеспечения. Мы не просто пишем код; мы создаем цифровую основу для самых амбициозных компаний мира.",
+          mainTitle: "Инженерные решения для цифровой эпохи",
+          description1: "DEVERA — это IT-компания, ориентированная на технологии и специализирующаяся на разработке высокопроизводительного программного обеспечения. Мы не просто пишем код; Мы предлагаем простые, быстрые и эффективные бизнес-решения для вас.",
           description2: "Наша миссия — преодолеть разрыв между сложными бизнес-задачами и элегантными техническими решениями, гарантируя, что наши клиенты остаются конкурентоспособными в постоянно меняющемся ландшафте.",
           values: {
             reliability: {
@@ -279,23 +279,23 @@ i18n.use(initReactI18next).init({
           items: {
             web: {
               title: "Веб-разработка",
-              desc: "Высокопроизводительные веб-приложения на React, Next.js и современных технологиях.",
+              desc: "Высокопроизводительные веб-приложения, созданные с использованием современных технологий.",
             },
             mobile: {
               title: "Мобильные приложения",
-              desc: "Нативные и кроссплатформенные мобильные решения для iOS и Android.",
+              desc: "Нативные и кроссплатформенные мобильные решения для устройств iOS и Android.",
             },
             design: {
               title: "UI/UX дизайн",
-              desc: "Пользовательский дизайн, сочетающий эстетику с бесшовной функциональностью.",
+              desc: "Красиво выглядящий и легко используемый дизайн.",
             },
             cloud: {
-              title: "Облако и Backend",
-              desc: "Масштабируемая облачная инфраструктура и надежные бэкенд-системы для сложных данных.",
+              title: "ERP и CRM системы",
+              desc: "Мы упрощаем управление бизнесом, собирая финансовые данные, данные о продажах и клиентах в единой системе.",
             },
             consulting: {
               title: "IT консалтинг",
-              desc: "Стратегические технологические консультации для навигации в цифровом ландшафте.",
+              desc: "Мы поддерживаем вас в выборе правильных технологий для вашего бизнеса.",
             },
           }
         },
@@ -306,8 +306,8 @@ i18n.use(initReactI18next).init({
           cta: "Узнать больше о нас",
           benefits: {
             seniorTeam: {
-              title: "Команда только сеньоров",
-              desc: "Вашим проектом занимаются опытные инженеры, а не джуны.",
+              title: "Опытные инженеры",
+              desc: "Вашим проектом руководят только опытные инженеры.",
             },
             globalStandards: {
               title: "Международные стандарты",
@@ -315,7 +315,7 @@ i18n.use(initReactI18next).init({
             },
             qualityFirst: {
               title: "Качество прежде всего",
-              desc: "Тщательное тестирование и код-ревью — часть нашей ДНК.",
+              desc: "Строгие тесты и анализ кода являются частью нашей ДНК.",
             },
             transparentProcess: {
               title: "Прозрачный процесс",
@@ -353,7 +353,7 @@ i18n.use(initReactI18next).init({
         contact: {
           sectionTitle: "Контакты",
           mainTitle: "Давайте вместе Создадим Что-То Экстраординарное",
-          description: "Есть идея для проекта? Или просто хотите поздороваться? Мы всегда открыты для обсуждения новых проектов, творческих идей или возможностей стать частью ваших видений.",
+          description: "Есть идея для проекта? Мы всегда готовы для новых проектов, творческих идей или возможностей стать частью ваших видений.",
           contactInfo: {
             email: {
               label: "Напишите нам на",
@@ -463,8 +463,8 @@ i18n.use(initReactI18next).init({
         },
         about: {
           sectionTitle: "DEVERA Haqqında",
-          mainTitle: "Rəqəmsal Dövr üçün Mühəndislik Mükəmməlliyi",
-          description1: "DEVERA yüksək performanslı proqram təminatı hazırlanması üzrə ixtisaslaşmış, texnologiyalara üstünlük verən bir IT şirkətidir. Biz sadəcə kod yazmırıq; dünyanın ən ambisiyalı şirkətləri üçün rəqəmsal təməl qururuq.",
+          mainTitle: "Rəqəmsal Dövr üçün Mühəndislik Həlləri",
+          description1: "DEVERA yüksək performanslı proqram təminatı hazırlanması üzrə ixtisaslaşmış, texnologiyalara üstünlük verən bir IT şirkətidir. Biz sadəcə kod yazmırıq; Sizin üçün sadə, sürətli və effektiv biznes həlləri təqdim edirik.",
           description2: "Bizim missiyamız mürəkkəb biznes ehtiyacları ilə zərif texniki həllər arasındakı boşluğu aradan qaldırmaq və müştərilərimizin daim dəyişən mühitdə rəqabət qabiliyyətini qorumağını təmin etməkdir.",
           values: {
             reliability: {
@@ -492,23 +492,23 @@ i18n.use(initReactI18next).init({
           items: {
             web: {
               title: "Veb inkişaf",
-              desc: "React, Next.js və müasir texnologiyalar ilə qurulmuş yüksək performanslı veb tətbiqlər.",
+              desc: "Müasir texnologiyalar ilə qurulmuş yüksək performanslı veb tətbiqlər.",
             },
             mobile: {
               title: "Mobil Tətbiqlər",
-              desc: "iOS və Android cihazları üçün nativ və çarpaz platformalı mobil həllər.",
+              desc: "iOS və Android cihazları üçün performanslı və istifadəçi-dostu mobil həllər.",
             },
             design: {
               title: "UI/UX Dizayn",
-              desc: "Estetikani qüsursuz funksionallıqla birləşdirən istifadəçi mərkəzli dizayn.",
+              desc: "Gözəl görünən və rahat istifadə olunan dizayn.",
             },
             cloud: {
-              title: "Bulud və Backend",
-              desc: "Mürəkkəb məlumatlar üçün miqyaslı bulud infrastrukturu və möhkəm arxa plan sistemləri.",
+              title: "ERP və CRM sistemlər",
+              desc: "Maliyyə, satış və müştəri məlumatlarını vahid sistemdə toplayaraq biznesin idarə edilməsini sadələşdiririk",
             },
             consulting: {
               title: "IT Məsləhətçilik",
-              desc: "Rəqəmsal mühitdə naviqasiya etməyinizə kömək edəcək strategiya texnologiya məsləhətləri.",
+              desc: "Biznesiniz üçün düzgün texnologiya seçimində sizə dəstək oluruq.",
             },
           }
         },
@@ -519,8 +519,8 @@ i18n.use(initReactI18next).init({
           cta: "Haqqımızda daha çox öyrən",
           benefits: {
             seniorTeam: {
-              title: "Yalnız baş mühəndislər",
-              desc: "Layihəniz yalnız təcrübəli mühəndislər tərəfindən idarə olunur, yoxsa yenibaşlayanlar.",
+              title: "İxtisaslı mühəndislər",
+              desc: "Layihəniz yalnız təcrübəli mühəndislər tərəfindən idarə olunur.",
             },
             globalStandards: {
               title: "Qlobal standartlar",
@@ -528,7 +528,7 @@ i18n.use(initReactI18next).init({
             },
             qualityFirst: {
               title: "Keyfiyyət birinci",
-              desc: "Ciddi testlər və kod nəzərdən keçirmələr bizim DNT-mizin bir hissəsidir.",
+              desc: "Ciddi testlər və kod analizi bizim DNT-mizin bir hissəsidir.",
             },
             transparentProcess: {
               title: "Şəffaf proses",
@@ -565,8 +565,8 @@ i18n.use(initReactI18next).init({
         },
         contact: {
           sectionTitle: "Əlaqə",
-          mainTitle: "Gəlin birlikdə qeyri adi bir şey yaradaq",
-          description: "Ağlınızda bir layihə varmı? Yoxsa sadəcə salam demək istəyirsiniz? Biz həmişə yeni layihələri, yaradıcı fikirləri və ya vizyonlarınızın bir hissəsi olmaq imkanlarını müzakirə etməyə açığıq.",
+          mainTitle: "Gəlin birlikdə qeyri-adi bir şey yaradaq",
+          description: "Ağlınızda bir layihə varmı? Biz həmişə yeni layihələri, yaradıcı fikirləri və ya vizyonlarınızın bir hissəsi olmaq imkanlarını müzakirə etməyə açığıq.",
           contactInfo: {
             email: {
               label: "Bizə e-poçt göndərin",
