@@ -75,7 +75,8 @@ export default function About() {
           >
             <div className="aspect-square rounded-[60px] overflow-hidden shadow-2xl dark:shadow-blue-500/5">
               <img
-                src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1200&q=80"
+                // src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1200&q=80"
+                src="/images/team-devera.avif"
                 alt="DEVERA Team"
                 className="w-full h-full object-cover dark:opacity-80 dark:brightness-90 transition-all"
               />
