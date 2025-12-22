@@ -59,7 +59,7 @@ export default function Services() {
           {services.map((service, idx) => (
             <motion.div
               key={idx}
-              className="bg-white dark:bg-gray-900 p-10 rounded-[32px] border border-gray-100 dark:border-gray-800 hover:border-[#0A66C2]/30 transition-all hover:shadow-xl group"
+              className="bg-white dark:bg-gray-900 p-10 rounded-4xl border border-gray-100 dark:border-gray-800 hover:border-[#0A66C2]/30 transition-all hover:shadow-xl group"
             >
               <div
                 className={`w-16 h-16 rounded-2xl flex items-center justify-center mb-8 transition-transform group-hover:scale-110 ${service.color}`}
