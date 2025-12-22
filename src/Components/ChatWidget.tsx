@@ -128,7 +128,7 @@ const ChatWidget = () => {
   };
 
   return (
-    <div ref={chatContainerRef} className="fixed bottom-6 right-6 z-[9999]">
+    <div ref={chatContainerRef} className="fixed bottom-6 right-6 z-9999">
       <AnimatePresence>
         {isChatOpen ? (
           <>
@@ -146,8 +146,8 @@ const ChatWidget = () => {
               exit={{ opacity: 0, scale: 0.9, y: 20 }}
               transition={{ duration: 0.3 }}
               className="flex flex-col bg-white dark:bg-[#121212] rounded-2xl shadow-2xl border border-gray-200 dark:border-gray-800 
-                         w-[calc(100vw-2rem)] md:w-[380px] 
-                         h-[85vh] md:h-[500px] 
+                         w-[calc(100vw-2rem)] md:w-95
+                         h-[85vh] md:h-125
                          overflow-hidden z-50
                          fixed
                          md:fixed md:bottom-32 md:right-6
@@ -216,7 +216,7 @@ const ChatWidget = () => {
                             {formatTime(msg.timestamp)}
                           </span>
                         </div>
-                        <p className="text-sm break-words leading-relaxed">
+                        <p className="text-sm wrap-break-word leading-relaxed">
                           {msg.text}
                         </p>
                       </div>
