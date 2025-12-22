@@ -82,7 +82,7 @@ export default function About() {
             </div>
             
             {/* Stats overlay */}
-            <div className="absolute -bottom-10 -left-10 bg-[#0A66C2] dark:bg-blue-600 text-white p-8 rounded-[40px] shadow-2xl dark:shadow-none transition-colors">
+            {/* <div className="absolute -bottom-10 -left-10 bg-[#0A66C2] dark:bg-blue-600 text-white p-8 rounded-[40px] shadow-2xl dark:shadow-none transition-colors">
               <div className="flex gap-12">
                 <div>
                   <p className="text-4xl font-bold mb-1">150+</p>
@@ -97,7 +97,7 @@ export default function About() {
                   </p>
                 </div>
               </div>
-            </div>
+            </div> */}
           </motion.div>
         </div>
       </div>
