@@ -1,5 +1,3 @@
-// src/Components/TawkToManager.tsx
-
 import { useState, useEffect } from "react";
 import HomePage from "../App/page.js";
 import TawkTo from "./TawkTo.js";
@@ -8,9 +6,9 @@ function TawkToManager() {
   const [isChatOpen, setIsChatOpen] = useState(false);
 
   useEffect(() => {
-    const handleEsc = (event) => {
+    const handleEsc = (event: KeyboardEvent) => {
       if (event.key === "Escape" && isChatOpen) {
-        window.Tawk_API.minimize();
+        window.Tawk_API?.minimize?.();
       }
     };
 
@@ -32,7 +30,7 @@ function TawkToManager() {
       {isChatOpen && (
         <div
           className="chat-overlay"
-          onClick={() => window.Tawk_API.minimize()}
+          onClick={() => window.Tawk_API?.minimize?.()}
         ></div>
       )}
 
