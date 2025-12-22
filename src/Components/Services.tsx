@@ -1,6 +1,6 @@
 import { motion } from "motion/react";
 import { useTranslation } from "react-i18next";
-import { Monitor, Smartphone, Palette, Cloud, BarChart, ArrowUpRight } from "lucide-react";
+import { Monitor, Smartphone, Palette, Cloud, BarChart } from "lucide-react";
 
 export default function Services() {
   const { t } = useTranslation();
@@ -72,12 +72,12 @@ export default function Services() {
               <p className="text-[#6B7280] dark:text-gray-400 leading-relaxed">
                 {service.desc}
               </p>
-              <a
+              {/* <a
                 href="#"
                 className="mt-8 flex items-center gap-2 text-[#0A66C2] dark:text-blue-400 font-bold text-sm opacity-0 group-hover:opacity-100 transition-all cursor-pointer"
               >
                 {t("services.learnMore")} <ArrowUpRight size={16} />
-              </a>
+              </a> */}
             </motion.div>
           ))}
         </div>
