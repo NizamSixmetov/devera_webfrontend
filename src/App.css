@@ -20,7 +20,8 @@
     @apply bg-white text-black transition-colors duration-300;
     @apply dark:bg-[#0a0a0a] dark:text-white;
     height: 100%;
-    overflow: hidden;
+    /* overflow: hidden; */
+    overflow-x: hidden;
   }
 }
 
