@@ -27,7 +27,7 @@ export default function Footer() {
             DEVERA
           </a>
 
-          <div className="flex gap-8 text-sm text-[#6B7280] dark:text-gray-400 font-medium">
+          {/* <div className="flex gap-8 text-sm text-[#6B7280] dark:text-gray-400 font-medium">
             <a
               href="#"
               className="hover:text-[#0A66C2] dark:hover:text-blue-400 transition-colors"
@@ -46,7 +46,7 @@ export default function Footer() {
             >
               {t("footer.cookies")}
             </a>
-          </div>
+          </div> */}
 
           <p className="text-sm text-[#6B7280] dark:text-gray-500">
             {t("footer.copyright", { year: new Date().getFullYear() })}
