@@ -123,10 +123,19 @@ export default function Header() {
           onClick={(e) => scrollToSection(e, "hero")}
           className="text-2xl font-bold tracking-tighter text-[#0A66C2] dark:text-white flex items-center gap-2 shrink-0"
         >
-          <div className="w-8 h-8 bg-[#0A66C2] dark:bg-blue-600 rounded-lg flex items-center justify-center shrink-0">
-            <div className="w-4 h-4 bg-white rounded-sm rotate-45" />
-          </div>
-          DEVERA
+          {theme === "dark" ? (
+            <img
+              src="/logos/devera-dark-logo.png"
+              alt="Devera Dark Logo"
+              className="w-[100px]"
+            />
+          ) : (
+            <img
+              src="/logos/devera-light-logo.png"
+              alt="Devera Light Logo"
+              className="w-[100px]"
+            />
+          )}
         </a>
 
         {/* Desktop Nav */}
