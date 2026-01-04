@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import type Lenis from "lenis";
 import HomePage from "../App/page.js";
 import TawkTo from "./TawkTo.js";
@@ -9,7 +9,7 @@ interface TawkToManagerProps {
 
 function TawkToManager({ lenisRef }: TawkToManagerProps) {
   const [isChatOpen, setIsChatOpen] = useState(false);
-  const [scrollPosition, setScrollPosition] = useState(0);
+  const scrollPositionRef = useRef(0);
 
   // Scroll block when chat is open
   useEffect(() => {
@@ -19,28 +19,30 @@ function TawkToManager({ lenisRef }: TawkToManagerProps) {
       return false;
     };
 
+    // Копируем ref для использования в cleanup
+    const lenis = lenisRef.current;
+
     if (isChatOpen) {
-      const currentScrollY = window.scrollY;
-      setScrollPosition(currentScrollY);
+      scrollPositionRef.current = window.scrollY;
 
       // Stop Lenis
-      if (lenisRef.current) {
-        lenisRef.current.stop();
+      if (lenis) {
+        lenis.stop();
       }
       window.addEventListener("wheel", preventScroll, { passive: false });
       window.addEventListener("touchmove", preventScroll, { passive: false });
     } else {
-      if (lenisRef.current) {
-        lenisRef.current.start();
+      if (lenis) {
+        lenis.start();
       }
       window.removeEventListener("wheel", preventScroll);
       window.removeEventListener("touchmove", preventScroll);
-      window.scrollTo(0, scrollPosition);
+      window.scrollTo(0, scrollPositionRef.current);
     }
 
     return () => {
-      if (lenisRef.current) {
-        lenisRef.current.start();
+      if (lenis) {
+        lenis.start();
       }
       document.body.style.position = "";
       document.body.style.top = "";
@@ -51,7 +53,7 @@ function TawkToManager({ lenisRef }: TawkToManagerProps) {
       window.removeEventListener("wheel", preventScroll);
       window.removeEventListener("touchmove", preventScroll);
     };
-  }, [isChatOpen, lenisRef, scrollPosition]);
+  }, [isChatOpen, lenisRef]);
 
   useEffect(() => {
     const handleEsc = (event: KeyboardEvent) => {
