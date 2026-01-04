@@ -2,6 +2,7 @@ import i18n from "i18next";
 import { useTranslation } from "react-i18next";
 import { useState, useEffect, useRef } from "react";
 import { Menu, X, ChevronDown, Sun, Moon } from "lucide-react";
+import { useLenisInstance } from "../App";
 
 const navItems = [
   { key: "about", id: "about" },
@@ -20,6 +21,9 @@ const languages = [
 export default function Header() {
   const { t } = useTranslation();
 
+  // Get Lenis instance from context
+  const lenisRef = useLenisInstance();
+
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("");
@@ -35,6 +39,35 @@ export default function Header() {
   });
 
   const langRef = useRef<HTMLDivElement>(null);
+
+  // Block scroll on body when mobile menu is open
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.style.overflow = "hidden";
+      document.body.style.touchAction = "none"; // Mobile scroll block
+
+      // Stop Lenis
+      if (lenisRef?.current) {
+        lenisRef.current.stop();
+      }
+    } else {
+      document.body.style.overflow = "";
+      document.body.style.touchAction = "";
+
+      // Start Lenis
+      if (lenisRef?.current) {
+        lenisRef.current.start();
+      }
+    }
+    // Cleanup component unmounting
+    return () => {
+      document.body.style.overflow = "";
+      document.body.style.touchAction = "";
+      if (lenisRef?.current) {
+        lenisRef.current.start();
+      }
+    };
+  }, [isMenuOpen, lenisRef]);
 
   useEffect(() => {
     if (theme === "dark") {
@@ -95,7 +128,13 @@ export default function Header() {
     const offset = 80;
     const y = element.getBoundingClientRect().top + window.pageYOffset - offset;
 
-    window.scrollTo({ top: y, behavior: "smooth" });
+    // Lenis window.scrollTo
+    if (lenisRef?.current) {
+      lenisRef.current.scrollTo(y);
+    } else {
+      window.scrollTo({ top: y, behavior: "smooth" });
+    }
+
     setIsMenuOpen(false);
   };
 
@@ -200,14 +239,6 @@ export default function Header() {
             )}
           </div>
 
-          {/* Start Project Button */}
-          {/* <button
-            onClick={(e) => scrollToSection(e, "contact")}
-            className="hidden md:block bg-[#7C3AED] hover:bg-[#6D28D9] text-white px-5 lg:px-6 py-2 rounded-full text-sm font-semibold transition-all active:scale-95 shadow-lg shadow-purple-200 dark:shadow-none cursor-pointer whitespace-nowrap shrink-0"
-          >
-            {t("nav.start")}
-          </button> */}
-
           {/* Burger Button */}
           <button
             className="md:hidden p-2 text-[#6B7280] dark:text-gray-400 cursor-pointer"
@@ -220,11 +251,13 @@ export default function Header() {
 
       {/* Mobile Menu */}
       <div
-        className={`md:hidden absolute top-full left-0 right-0 bg-white dark:bg-[#0a0a0a] border-t border-gray-100 dark:border-gray-900 transition-all duration-300 overflow-hidden ${
-          isMenuOpen ? "h-screen opacity-100" : "h-0 opacity-0"
+        className={`md:hidden absolute top-full left-0 right-0 bg-white dark:bg-[#0a0a0a] border-t border-gray-100 dark:border-gray-900 transition-all duration-300 ${
+          isMenuOpen
+            ? "h-screen opacity-100 overflow-y-auto"
+            : "h-0 opacity-0 overflow-hidden"
         }`}
       >
-        <nav className="flex flex-col p-6 gap-4">
+        <nav className="flex flex-col p-6 gap-4 pb-20">
           {navItems.map((item) => (
             <a
               key={item.id}
