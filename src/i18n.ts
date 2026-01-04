@@ -153,7 +153,7 @@ i18n.use(initReactI18next).init({
             },
             phone: {
               label: "Call us at",
-              value: "+994 (77) 800-27-77",
+              value: "+994 (77) 600-27-77",
             },
             address: {
               label: "Visit our office",
@@ -372,7 +372,7 @@ i18n.use(initReactI18next).init({
             },
             phone: {
               label: "Позвоните нам по номеру",
-              value: "+994 (77) 800-27-77",
+              value: "+994 (77) 600-27-77",
             },
             address: {
               label: "Посетите наш офис",
@@ -592,7 +592,7 @@ i18n.use(initReactI18next).init({
             },
             phone: {
               label: "Bizə zəng edin",
-              value: "+994 (77) 800-27-77",
+              value: "+994 (77) 600-27-77",
             },
             address: {
               label: "Ofisimizi ziyarət edin",
