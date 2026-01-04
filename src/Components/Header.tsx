@@ -2,7 +2,7 @@ import i18n from "i18next";
 import { useTranslation } from "react-i18next";
 import { useState, useEffect, useRef } from "react";
 import { Menu, X, ChevronDown, Sun, Moon } from "lucide-react";
-import { useLenisInstance } from "../App";
+import { useLenisInstance } from "../contexts/LenisContext";
 
 const navItems = [
   { key: "about", id: "about" },
@@ -42,29 +42,32 @@ export default function Header() {
 
   // Block scroll on body when mobile menu is open
   useEffect(() => {
+    // Копируем ref для использования в cleanup
+    const lenis = lenisRef?.current;
+
     if (isMenuOpen) {
       document.body.style.overflow = "hidden";
       document.body.style.touchAction = "none"; // Mobile scroll block
 
       // Stop Lenis
-      if (lenisRef?.current) {
-        lenisRef.current.stop();
+      if (lenis) {
+        lenis.stop();
       }
     } else {
       document.body.style.overflow = "";
       document.body.style.touchAction = "";
 
       // Start Lenis
-      if (lenisRef?.current) {
-        lenisRef.current.start();
+      if (lenis) {
+        lenis.start();
       }
     }
     // Cleanup component unmounting
     return () => {
       document.body.style.overflow = "";
       document.body.style.touchAction = "";
-      if (lenisRef?.current) {
-        lenisRef.current.start();
+      if (lenis) {
+        lenis.start();
       }
     };
   }, [isMenuOpen, lenisRef]);
